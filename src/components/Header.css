@@ -1,0 +1,27 @@
+#header {
+	background-color: green;
+	padding: 20px;
+}
+
+#header * {
+	color: white;
+}
+
+#login-out {
+	float: right;
+}
+
+.header-title {
+	text-align: center;
+}
+
+#search-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#search-box > input {
+	width: calc(100% - 80px);
+	text-indent: 8px;
+}

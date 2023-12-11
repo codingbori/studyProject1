@@ -1,0 +1,16 @@
+.category {
+	display: flex;
+	align-items: center;
+}
+
+.category li {
+	display: inline-block;
+	min-width: 100px;
+	text-align: center;
+	border: 1px solid green;
+}
+
+.category .active {
+	background-color: lightgreen;
+	font-weight: 700;
+}

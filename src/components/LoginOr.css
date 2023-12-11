@@ -1,0 +1,22 @@
+.login-box {
+	display: inline-block;
+	margin-top: calc(50vh - 100px);
+	padding: 20px;
+	border: 4px solid green;
+}
+
+.login-box * {
+	margin-bottom: 6px;
+}
+
+.outer-login {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cannot-login {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
