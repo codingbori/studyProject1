@@ -13,15 +13,14 @@ class LoginOr extends React.Component {
   }
 
   render() {
+    /*global kakao*/
     let loginOr = this.state.member ? (
       <div className="login-box">
         <form action="./login.do" method="get">
-          <label htmlFor="userid">
-            아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </label>
+          <label htmlFor="userid">아이디 :</label>
           <input type="text" id="userid" name="id" />
           <br />
-          <label htmlFor="password">비밀번호&nbsp;&nbsp;</label>
+          <label htmlFor="password">비밀번호 :</label>
           <input type="password" id="password" name="pw" />
           <br />
           <button type="submit">로그인하기</button>
@@ -39,18 +38,16 @@ class LoginOr extends React.Component {
     ) : (
       <div className="login-box">
         <form method="get">
-          <label htmlFor="userid">
-            아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </label>
+          <label htmlFor="userid">아이디 :</label>
           <input type="text" id="userid" name="id" />
           <br />
-          <label htmlFor="password">비밀번호&nbsp;&nbsp;</label>
+          <label htmlFor="password">비밀번호 :</label>
           <input type="password" id="password" name="pw" />
           <br />
-          <label htmlFor="password2">비밀번호 확인&nbsp;</label>
+          <label htmlFor="password2">비밀번호 확인 :</label>
           <input type="password" id="password2" name="pw2" />
           <br />
-          <label htmlFor="nickname">닉네임&nbsp;&nbsp;&nbsp;</label>
+          <label htmlFor="nickname">닉네임 :</label>
           <input type="text" id="nickname" name="nickname" />
           <br />
           <button type="submit">가입하기</button>
