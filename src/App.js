@@ -7,20 +7,32 @@ import Posts from "./components/Posts";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { toLogin: false };
-    this.toLogin = this.toLogin.bind(this);
+    this.state = {
+      user: null,
+      toLogin: false,
+    };
+    this.setUser = this.setUser.bind(this);
+    this.setToLogin = this.setToLogin.bind(this);
   }
 
-  toLogin() {
+  setUser(userObj) {
+    this.setState({ user: userObj });
+  }
+
+  setToLogin() {
     this.setState({ toLogin: !this.state.toLogin });
   }
 
   render() {
     const appNow = this.state.toLogin ? (
-      <LoginOr toLogin={this.toLogin} />
+      <LoginOr toLogin={this.setToLogin} setUser={this.setUser} />
     ) : (
       <div>
-        <Header toLogin={this.toLogin} />
+        <Header
+          user={this.state.user}
+          setUser={this.setUser}
+          toLogin={this.setToLogin}
+        />
         <Posts />
       </div>
     );

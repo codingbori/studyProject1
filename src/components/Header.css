@@ -3,16 +3,13 @@
 	padding: 20px;
 }
 
-#header * {
-	color: white;
-}
-
 #login-out {
 	float: right;
 }
 
 .header-title {
 	text-align: center;
+	color: white;
 }
 
 #search-box {
