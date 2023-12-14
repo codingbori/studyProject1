@@ -185,7 +185,16 @@ class LoginOr extends React.Component {
           <div>
             <div className="outer-login">
               <button style={{ background: "lightgreen" }}>네이버</button>
-              <button style={{ background: "yellow" }}>카카오</button>
+              <button
+                style={{ background: "yellow" }}
+                onClick={() =>
+                  Kakao.Auth.authorize({
+                    redirectUri: "https://2023community.netlify.app",
+                  })
+                }
+              >
+                카카오
+              </button>
               <button style={{ background: "blue" }}>메타</button>
             </div>
             <div className="cannot-login">
