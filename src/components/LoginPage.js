@@ -64,10 +64,10 @@ const LoginPage = () => {
           </div>
           <div className="cannot-login">
             <button>
-              <Link to="/membership/">회원가입</Link>
+              <Link to="/login/membership/">회원가입</Link>
             </button>
             <button>
-              <Link to="/findpassword/">비밀번호 찾기</Link>
+              <Link to="/login/findpassword/">비밀번호 찾기</Link>
             </button>
           </div>
         </div>

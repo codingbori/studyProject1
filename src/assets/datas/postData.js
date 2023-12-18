@@ -2,10 +2,10 @@ const posts = [
   {
     id: 1,
     userid: "user1",
-    title: "테스트1",
-    text: "loremlorem",
+    title: "이젠 뭔가 되는 기분이 들어",
+    text: "네이트판에서 맨날 보던 그 포멧 다시 보니 감회가 새롭네요. 예쁘게 만드는 건 디자이너가 알아서 하겠지... 계획서랑 비슷한 모양새를 내기 위해서 강아지 그림도 추가해줄 거예요.",
     imageUrl: [
-      { src: "", alt: "빈이미지1" },
+      { src: "/image/puppy.jpg", alt: "멍멍그림" },
       { src: "", alt: "빈이미지2" },
     ],
     category: "일상",
@@ -15,8 +15,8 @@ const posts = [
   {
     id: 2,
     userid: "user1",
-    title: "테스트2",
-    text: "loremlorem",
+    title: "아냐 되지 않아",
+    text: "이미지 왜 연결이 되지 않죠?: create-react-app의 문제로, public 폴더에 넣으니까 돌아간다. 실전에서는 서버에 올릴 테니까 괜찮겠지?",
     imageUrl: [
       { src: "", alt: "빈이미지1" },
       { src: "", alt: "빈이미지2" },
@@ -28,8 +28,8 @@ const posts = [
   {
     id: 3,
     userid: "user1",
-    title: "테스트3",
-    text: "loremlorem",
+    title: "와아 뒤로가기 하면 무조건 홈페이지",
+    text: "loremloremhttps://dongkeun2.tistory.com/entry/React-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%9B%84-%EC%9D%B4%EC%A0%84-%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A1%9C-%EC%9D%B4%EB%8F%99-%EA%B5%AC%ED%98%84 좋은 사이트 같던데 참고해야지. 내일.",
     imageUrl: [
       { src: "", alt: "빈이미지1" },
       { src: "", alt: "빈이미지2" },

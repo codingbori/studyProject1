@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Posts.css";
+import posts from "../assets/datas/postData";
 
 class Posts extends React.Component {
   constructor(props) {
@@ -18,15 +20,41 @@ class Posts extends React.Component {
   }
 
   render() {
+    const postList = [];
+    const category = this.state.category;
+    posts.forEach((post) => {
+      if (category !== "전체" && category !== post.category) return;
+      postList[postList.length] = (
+        <section className="outer-post" key={post.id}>
+          <span>{post.category}</span>
+          <h4 className="outer-post-title">
+            <Link
+              to="/posting/"
+              onClick={() => {
+                window.localStorage.setItem("postingNow", post.id);
+                post.clicked += 1;
+              }}
+            >
+              {post.title}
+            </Link>
+          </h4>
+          <span>조회수{post.clicked}</span>
+        </section>
+      );
+    });
+
     return (
-      <main>
-        <ul className="category" onClick={this.addActive}>
-          <li className="active">전체</li>
-          <li>일상</li>
-          <li>정보</li>
-          <li>공구</li>
-        </ul>
-      </main>
+      <>
+        <nav className="category-nav">
+          <ul className="category" onClick={this.addActive}>
+            <li className="active">전체</li>
+            <li>일상</li>
+            <li>정보</li>
+            <li>공구</li>
+          </ul>
+        </nav>
+        <main>{postList}</main>
+      </>
     );
   }
 }

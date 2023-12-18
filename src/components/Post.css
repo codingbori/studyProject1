@@ -1,0 +1,14 @@
+.post {
+	text-align: left;
+	padding: 20px;
+	min-height: 100px;
+}
+
+.post-author {
+	text-align: right;
+	margin: 0;
+}
+
+.post-text {
+	margin: 40px 0;
+}
