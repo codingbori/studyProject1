@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import makeTableRow from "../assets/tools.js";
 import "./LoginPage.css";
 import users from "../assets/datas/userData.js";
 
 const LoginPage = () => {
+  const { state } = useLocation();
   const [alert, setAlert] = useState("");
   const navigate = useNavigate();
   const handleLogin = (event) => {
@@ -19,7 +20,11 @@ const LoginPage = () => {
           email: user.email,
         };
         window.localStorage.setItem("2023user", JSON.stringify(userData));
-        navigate("/");
+        if (state) {
+          navigate(state);
+        } else {
+          navigate("/");
+        }
         return;
       }
     }

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("2023user"));
   const [person, changePerson] = useState(user);
   const choice = () => {
@@ -43,13 +45,17 @@ const Header = () => {
     <>
       <header id="header">
         <div id="login-out">
-          <div className="button-home">
-            <Link to="/" />
+          <div className="button-home" onClick={() => navigate("/")}>
+            A
           </div>
           {!person && (
-            <Link to="/login/">
-              <button>로그인하세요</button>
-            </Link>
+            <button
+              onClick={() => {
+                navigate("/login/", { state: pathname });
+              }}
+            >
+              로그인하세요
+            </button>
           )}
           {person && (
             <>

@@ -18,6 +18,10 @@
 }
 
 /*main*/
+.post-main {
+	height: 190px;
+}
+
 .outer-post {
 	width: 100%;
 	display: flex;
@@ -34,4 +38,3 @@
 	text-indent: 20px;
 	margin: 0;
 }
-

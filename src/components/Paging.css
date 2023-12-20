@@ -1,0 +1,33 @@
+.paging-box {
+	align-items: center;
+	width: 320px;
+	margin: 0 auto;
+	padding: 4px 0;
+}
+
+.prev {float: left;}
+.next {float: right;}
+
+.page-numbers {
+	display: inline-block;
+	margin: 0 auto;
+	text-align: left;
+	width: 220px;
+}
+
+.paging-box button {
+	width: 40px;
+	margin: 2px;
+	padding: 2px;
+	background-color: ligthgray;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	font-weight: 700;
+}
+
+.paging-box button.active {
+	background-color: lightgreen;
+}
+.paging-box button:hover {
+	background-color: lightgreen;
+}

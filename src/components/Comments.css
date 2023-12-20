@@ -1,0 +1,27 @@
+.add-comment {
+	background-color: lightgray;
+	border: 1px solid lightgreen;
+	padding: 10px;
+}
+
+.comment {
+	border: 1px solid gray;
+	padding: 4px 20px;
+	text-align: left;
+}
+
+.comment.r {
+	padding-left: 40px;
+	background-color: lightgray;
+}
+
+.comment-user {
+	color: gray;
+	font-size: 0.8rem;
+	margin: 0;
+	padding: 0;
+}
+
+.comment-text {
+	margin: 0;
+}

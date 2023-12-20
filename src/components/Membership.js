@@ -33,7 +33,7 @@ const Membership = () => {
 
   return (
     <div className="login-box">
-      <h1>싱싱감자router</h1>
+      <h1>싱싱감자</h1>
       <form onSubmit={makeMembership}>
         <table>
           <tbody>

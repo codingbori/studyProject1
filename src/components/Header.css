@@ -4,11 +4,24 @@
 }
 
 #login-out {
-	float: right;
+	display: flex;
+	justify-content: space-between;
 	position: relative;
 }
 
+.button-home {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border: 1px solid white;
+	border-radius: 50%;
+	background-color: white;
+	color: green;
+	font-weight: 700;
+}
+
 .header-title {
+	margin-top: 0;
 	text-align: center;
 	color: white;
 }
