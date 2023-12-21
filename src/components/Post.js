@@ -16,6 +16,7 @@ const Post = () => {
     }
   }
 
+<<<<<<< HEAD
   logJSONData();
 
   // const postImages = [];
@@ -24,6 +25,14 @@ const Post = () => {
   //     postImages.push(<img src={obj.src} alt={obj.alt} key={index} />);
   //   });
   // }
+=======
+  const postImages = [];
+  if (p.imageUrl) {
+    p.imageUrl.forEach((obj, index) => {
+      postImages.push(<img src={obj.src} alt={obj.alt} key={index} />);
+    });
+  }
+>>>>>>> 2a3c16dd175d45f51c7074db2b4f04f77e9f0dc8
 
   return (
     <>
