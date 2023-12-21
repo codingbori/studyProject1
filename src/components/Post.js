@@ -13,7 +13,7 @@ const Post = () => {
 
   const postImages = [];
   if (p.imageUrl) {
-    p.imageUrl.map((obj, index) => {
+    p.imageUrl.forEach((obj, index) => {
       postImages.push(<img src={obj.src} alt={obj.alt} key={index} />);
     });
   }
