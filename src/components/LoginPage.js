@@ -2,35 +2,36 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import makeTableRow from "../assets/tools.js";
 import "./LoginPage.css";
-import users from "../assets/datas/userData.js";
 
 const LoginPage = () => {
   const { state } = useLocation();
   const [alert, setAlert] = useState("");
   const navigate = useNavigate();
-  const handleLogin = (event) => {
+
+  async function handleLogin(event) {
     event.preventDefault();
     const id = event.target.id.value;
     const pw = event.target.pw.value;
-    for (const user of users) {
-      if (user.id === id && user.password === pw) {
-        const userData = {
-          id: user.id,
-          nickname: user.nickname,
-          email: user.email,
-        };
-        window.localStorage.setItem("2023user", JSON.stringify(userData));
+    try {
+      const response = await fetch(
+        `http://localhost:8000/users?id=${id}&password=${pw}`
+      );
+      const datas = await response.json();
+      if (!datas.length) {
+        setAlert("아이디 혹은 비밀번호가 틀립니다.");
+      } else {
+        window.localStorage.setItem("2023user", JSON.stringify(datas[0]));
         if (state) {
           navigate(state);
         } else {
           navigate("/");
         }
-        return;
       }
+    } catch (err) {
+      console.log(err);
+      throw err;
     }
-    setAlert("아이디 혹은 비밀번호가 틀립니다.");
-    return;
-  };
+  }
 
   return (
     <>
@@ -58,7 +59,7 @@ const LoginPage = () => {
             <button
               style={{ background: "yellow" }}
               // onClick={() =>
-              //   Kakao.Auth.authorize({
+              //   window.Kakao.Auth.authorize({
               //     redirectUri: "https://2023community.netlify.app",
               //   })
               // }

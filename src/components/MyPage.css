@@ -1,0 +1,38 @@
+/*Mypage*/
+.mypage-header {
+	background-color: lightpink;
+	color: white;
+	margin: 0;
+	padding: 20px;
+	display: flex;
+	align-items: baseline;
+}
+
+.mypage-tohome {
+	opacity: 80%;
+	font-size: 1.5rem;
+	margin: 0;
+}
+
+.mypage-title {
+	font-size: 2rem;
+	margin: 0 0 0 10px;
+}
+
+.mypage-desc {
+	text-align: left;
+}
+
+.mypage-main {
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.profile-card{
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+
+.mypage-main td {
+	padding: 10px;
+}

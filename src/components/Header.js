@@ -37,6 +37,7 @@ const Header = () => {
         >
           로그아웃
         </button>
+        <button>내가 쓴 글 보기</button>
       </div>
     );
   };

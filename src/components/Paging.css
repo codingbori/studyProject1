@@ -5,14 +5,17 @@
 	padding: 4px 0;
 }
 
-.prev {float: left;}
-.next {float: right;}
+.prev {
+	float: left;
+}
+.next {
+	float: right;
+}
 
 .page-numbers {
 	display: inline-block;
-	margin: 0 auto;
-	text-align: left;
 	width: 220px;
+	text-align: left;
 }
 
 .paging-box button {
@@ -30,4 +33,8 @@
 }
 .paging-box button:hover {
 	background-color: lightgreen;
+}
+
+.hidden {
+	visibility: hidden !important;
 }

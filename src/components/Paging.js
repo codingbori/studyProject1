@@ -44,29 +44,24 @@ class Paging extends React.Component {
 
     return (
       <div className="paging-box" onClick={this.currentPageChange}>
-        {startPage > pageCount && (
-          <button value={startPage - 1} key="prev" className="prev">
-            이전
-          </button>
-        )}
-
+        <button
+          value={startPage - 1}
+          key="prev"
+          className={startPage > pageCount ? "prev" : "prev hidden"}
+        >
+          이전
+        </button>
         <div className="page-numbers">{buttons}</div>
-
-        {totalPage > endPage && (
-          <button value={endPage + 1} key="next" className="next">
-            다음
-          </button>
-        )}
+        <button
+          value={endPage + 1}
+          key="next"
+          className={totalPage > endPage ? "next" : "next hidden"}
+        >
+          다음
+        </button>
       </div>
     );
   }
 }
 
 export default Paging;
-
-/**변수설정:
- * currentPage: 현재 페이지
- * totalCount: 총 데이터 갯수
- * pageCount: 화면에 나타날 페이지 갯수
- * limit: 한 페이지당 나타날 데이터 갯수
- */

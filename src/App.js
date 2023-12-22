@@ -7,7 +7,7 @@ import Post from "./components/Post";
 import LoginPage from "./components/LoginPage";
 import Membership from "./components/Membership";
 import FindPassword from "./components/FindPassword";
-import MyPage, { ChangePw } from "./components/MyPage";
+import MyPage, { Profile, ChangePw } from "./components/MyPage";
 
 const Home = () => {
   return (
@@ -27,8 +27,8 @@ const App = () => {
           <Route path="/posting/" element={<Post />} />
         </Route>
 
-        <Route path="/myPage/">
-          <Route index element={<MyPage />} />
+        <Route path="/myPage/" element={<MyPage />}>
+          <Route index element={<Profile />} />
           <Route path="/myPage/changePW/" element={<ChangePw />} />
         </Route>
         <Route path="/login/">

@@ -1,32 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import makeTableRow from "../assets/tools.js";
-import users from "../assets/datas/userData.js";
 import { useState } from "react";
 
 const Membership = () => {
   const [alert, setAlert] = useState("");
   const navigate = useNavigate();
-  const makeMembership = (event) => {
+  const makeMembership = async (event) => {
     event.preventDefault();
     //검증로직
-    for (const user of users) {
-      if (user.id === event.target.id.value) {
-        setAlert("이미 존재하는 아이디입니다");
-        return;
-      }
+    const response = await fetch(
+      `http://localhost:8000/users?id=${event.target.id.value}`
+    );
+    const datas = await response.json();
+    if (datas.length) {
+      setAlert("이미 존재하는 아이디입니다");
+      return;
     }
     if (event.target.pw.value !== event.target.pw2.value) {
       setAlert("비밀번호가 일치하지 않습니다.");
       return;
     }
     //검증끝
-
-    users[users.length] = {
+    const data = {
       id: event.target.id.value,
       password: event.target.pw.value,
       email: event.target.email.value,
       nickname: event.target.id.value,
     };
+    fetch("http://localhost:8000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
     navigate("/login/");
     return;
   };

@@ -1,67 +1,108 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import makeTableRow from "../assets/tools";
-import users from "../assets/datas/userData";
+import "./MyPage.css";
 
 const ChangePw = () => {
-  const handleChangePW = (event) => {
+  const handleChangePW = async (event) => {
     event.preventDefault();
     const userID = JSON.parse(localStorage.getItem("2023user")).id;
-    for (const user of users) {
-      if (userID === user.id) {
-        if (event.target.pw.value !== user.password) {
-          alert("비밀번호가 틀립니다.");
-          return;
-        } else if (event.target.pw2.value !== event.target.pw3.value) {
-          alert("바꿀 비밀번호가 서로 다릅니다.");
-          return;
-        } else {
-          user.password = event.target.pw2.value;
-          alert("비밀번호가 변경되었습니다.");
-          return;
-        }
-      }
+    const response = await fetch(
+      `http://localhost:8000/users?id=${userID}&password=${event.target.pw.value}`
+    );
+    const userData = await response.json();
+    if (!userData.length) {
+      window.alert("비밀번호가 틀립니다.");
+      return;
+    } else if (event.target.pw2.value !== event.target.pw3.value) {
+      window.alert("바꿀 비밀번호가 서로 다릅니다.");
+      return;
+    } else {
+      fetch(`http://localhost:8000/users/${userID}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: event.target.pw2.value }),
+      });
+      window.alert("비밀번호가 변경되었습니다.");
+      return;
     }
   };
+
   return (
-    <form onSubmit={handleChangePW}>
-      <table>
-        <thead>
-          <tr>
-            <td>비밀번호 변경하기</td>
-          </tr>
-        </thead>
+    <div className="change-myinfo">
+      <form onSubmit={handleChangePW}>
+        <table>
+          <thead>
+            <tr>
+              <th colSpan="2">비밀번호 변경하기</th>
+            </tr>
+          </thead>
+          <tbody>
+            {makeTableRow("현재 비밀번호", "password", "pw")}
+            {makeTableRow("바꿀 비밀번호", "password", "pw2")}
+            {makeTableRow("비밀번호 확인", "password", "pw3")}
+            <tr>
+              <td colSpan="2">
+                <input type="submit" value="확인" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  );
+};
+
+const Profile = () => {
+  const userdata = JSON.parse(localStorage.getItem("2023user"));
+  return (
+    <>
+      <p className="mypage-desc">나의 프로필을 확인하고 수정할 수 있습니다.</p>
+      <table className="profile-card">
         <tbody>
-          {makeTableRow("현재 비밀번호", "password", "pw")}
-          {makeTableRow("바꿀 비밀번호", "password", "pw2")}
-          {makeTableRow("바꿀 비밀번호 확인", "password", "pw3")}
+          <tr>
+            <td rowSpan="2">그림1</td>
+            <td>{userdata.nickname}</td>
+            <td>
+              <button>변경하기</button>
+            </td>
+          </tr>
+          <tr>
+            <td>{userdata.email}</td>
+            <td>
+              <button>변경하기</button>
+            </td>
+          </tr>
           <tr>
             <td>
-              <input type="submit" value="확인" />
+              <button>변경</button>
+              <button>삭제</button>
+            </td>
+            <td colSpan="2">
+              <Link to="/myPage/changePW/">비밀번호 변경하기</Link>
             </td>
           </tr>
         </tbody>
       </table>
-    </form>
-  );
-};
-
-const MyPage = () => {
-  const userdata = JSON.parse(localStorage.getItem("2023user"));
-  return (
-    <>
-      <h1>내 정보</h1>
-      <ul>
-        <li>닉네임: {userdata.nickname}</li>
-        <li>이메일: {userdata.email}</li>
-        <li>
-          <Link to="/myPage/changePW/">비밀번호 변경하기</Link>
-        </li>
-        <li>
-          <button>내가 쓴 글 보기</button>
-        </li>
-      </ul>
     </>
   );
 };
 
-export { ChangePw, MyPage as default };
+const MyPage = () => {
+  return (
+    <>
+      <header className="mypage-header">
+        <h1 className="mypage-tohome">
+          <Link to="/">싱싱감자</Link>
+        </h1>
+        <h2 className="mypage-title">
+          <Link to="/myPage/">내 정보</Link>
+        </h2>
+      </header>
+      <main className="mypage-main">
+        <Outlet />
+      </main>
+    </>
+  );
+};
+
+export { Profile, ChangePw, MyPage as default };

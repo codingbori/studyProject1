@@ -1,5 +1,5 @@
 import "./Comments.css";
-import comments from "../assets/datas/commentData";
+import { useEffect, useState } from "react";
 
 const commentFrame = (comment, depth = 0) => {
   let isReply = "";
@@ -13,27 +13,60 @@ const commentFrame = (comment, depth = 0) => {
 };
 
 const Comments = () => {
+  const [comments, setComments] = useState([]);
+
   const addComment = (e) => {
     e.preventDefault();
-    console.log(e.target.comment.value);
+    const time = Date.now();
+    const id = JSON.parse(localStorage.getItem("2023user")).id;
+    const data = {
+      id: String(time) + id,
+      userId: id,
+      text: e.target.comment.value,
+      postId: JSON.parse(localStorage.getItem("postingNow")),
+      parentId: 0,
+      timeStamp: time,
+    };
+    e.target.comment.value = "";
+    fetch("http://localhost:8000/comments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then(setComments([...comments, data]))
+      .catch((err) => console.log(err));
   };
 
-  const postId = JSON.parse(localStorage.getItem("postingNow"));
+  useEffect(() => {
+    const postId = JSON.parse(localStorage.getItem("postingNow"));
+    async function fetchComments() {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/comments?postId=${postId}`
+        );
+        const datas = await response.json();
+        setComments(datas);
+      } catch (err) {
+        console.log(err);
+        throw err;
+      }
+    }
+    fetchComments();
+  }, []);
+
   const commentList = [];
   comments.forEach((comment) => {
-    if (comment.postId === postId) {
-      if (comment.parentId === 0) {
-        commentList.push(commentFrame(comment));
-      } else {
-        for (let i = 0; i < commentList.length; i++) {
-          const c = commentList[i];
-          if (Number(c.key) === Number(comment.parentId)) {
-            while (commentList[i + 1]?.key[0] === "r") {
-              i += 1;
-            }
-            commentList.splice(i + 1, 0, commentFrame(comment, 1));
-            break;
+    if (comment.parentId === 0) {
+      commentList.push(commentFrame(comment));
+    } else {
+      for (let i = 0; i < commentList.length; i++) {
+        const c = commentList[i];
+        if (Number(c.key) === Number(comment.parentId)) {
+          while (commentList[i + 1]?.key[0] === "r") {
+            i += 1;
           }
+          commentList.splice(i + 1, 0, commentFrame(comment, 1));
+          break;
         }
       }
     }

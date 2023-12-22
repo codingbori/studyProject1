@@ -1,24 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import makeTableRow from "../assets/tools";
-import users from "../assets/datas/userData";
 import { useState } from "react";
 
 const FindPassword = () => {
   const [alert, setAlert] = useState("");
   const navigate = useNavigate();
-  const searchPassword = (event) => {
+  const searchPassword = async (event) => {
     event.preventDefault();
-    for (const user of users) {
-      if (
-        user.id === event.target.id.value &&
-        user.email === event.target.email.value
-      ) {
-        alert(`당신의 비밀번호는 ${user.password}입니다`);
-        navigate("/login/");
-        return;
-      }
+    const response = await fetch(
+      `http://localhost:8000/users?id=${event.target.id.value}&email=${event.target.email.value}`
+    );
+    const userData = await response.json();
+    if (!userData.length) {
+      setAlert("일치하는 사용자가 없습니다");
+    } else {
+      window.alert(`당신의 비밀번호는 ${userData[0].password}입니다`);
+      navigate("/login/");
     }
-    setAlert("일치하는 사용자가 없습니다");
+    return;
   };
 
   return (
