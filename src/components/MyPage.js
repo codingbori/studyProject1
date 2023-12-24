@@ -52,6 +52,19 @@ const ChangePw = () => {
   );
 };
 
+const changeNickname = (e) => {
+  if (e.target === e.currentTarget.children[2].children[0]) {
+    const userID = JSON.parse(localStorage.getItem("2023user")).id;
+    fetch(`http://localhost:8000/users/${userID}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nickname: e.currentTarget.children[1].children[0].value,
+      }),
+    }).catch((err) => console.log(err));
+  }
+};
+
 const Profile = () => {
   const userdata = JSON.parse(localStorage.getItem("2023user"));
   return (
@@ -59,9 +72,11 @@ const Profile = () => {
       <p className="mypage-desc">나의 프로필을 확인하고 수정할 수 있습니다.</p>
       <table className="profile-card">
         <tbody>
-          <tr>
+          <tr onClick={changeNickname}>
             <td rowSpan="2">그림1</td>
-            <td>{userdata.nickname}</td>
+            <td>
+              <input type="text" placeholder="작동하지 않음" />
+            </td>
             <td>
               <button>변경하기</button>
             </td>

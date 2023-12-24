@@ -1,22 +1,13 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
+import Home from "./components/Home";
 import Posts from "./components/Posts";
 import Post from "./components/Post";
 import LoginPage from "./components/LoginPage";
 import Membership from "./components/Membership";
 import FindPassword from "./components/FindPassword";
 import MyPage, { Profile, ChangePw } from "./components/MyPage";
-
-const Home = () => {
-  return (
-    <>
-      <Header />
-      <Outlet />
-    </>
-  );
-};
 
 const App = () => {
   return (

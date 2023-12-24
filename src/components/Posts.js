@@ -66,7 +66,11 @@ const Posts = () => {
             to="/posting/"
             onClick={() => {
               window.localStorage.setItem("postingNow", post.id);
-              post.clicked += 1;
+              fetch(`http://localhost:8000/posts/${post.id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ clicked: post.clicked + 1 }),
+              }).catch((err) => console.log(err));
             }}
           >
             {post.title}

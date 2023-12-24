@@ -17,7 +17,7 @@
       ],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 3
     },
     {
       "id": 2,
@@ -36,7 +36,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 3
     },
     {
       "id": 3,
@@ -55,7 +55,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 5
     },
     {
       "id": 4,
@@ -65,7 +65,7 @@
       "imageUrl": [],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 5
     },
     {
       "id": 5,
@@ -84,7 +84,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 6,
@@ -160,7 +160,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 10,
@@ -1323,6 +1323,62 @@
       "postId": 2,
       "parentId": 0,
       "timeStamp": 1703257447945
+    },
+    {
+      "id": "1703261427511user2",
+      "userId": "user2",
+      "text": "구린 css는 나중에 조정하도록 합시다.",
+      "postId": 2,
+      "parentId": 0,
+      "timeStamp": 1703261427511
+    },
+    {
+      "id": "1703302277832user1",
+      "userId": "user1",
+      "text": "새 댓글",
+      "postId": 3,
+      "parentId": "0",
+      "timeStamp": 1703302277832
+    },
+    {
+      "id": "1703302285320user1",
+      "userId": "user1",
+      "text": "새 대댓글 달기",
+      "postId": 3,
+      "parentId": 1,
+      "timeStamp": 1703302285320
+    },
+    {
+      "id": "1703302292309user1",
+      "userId": "user1",
+      "text": "감동이죠",
+      "postId": 3,
+      "parentId": 1,
+      "timeStamp": 1703302292309
+    },
+    {
+      "id": "1703308039924user1",
+      "userId": "user1",
+      "text": "댓글달기",
+      "postId": 1,
+      "parentId": "0",
+      "timeStamp": 1703308039924
+    },
+    {
+      "id": "1703308047575user1",
+      "userId": "user1",
+      "text": "대댓글달기",
+      "postId": 1,
+      "parentId": "1703308039924user1",
+      "timeStamp": 1703308047575
+    },
+    {
+      "id": "1703394661439user1",
+      "userId": "user1",
+      "text": "대댓글 추가 도전",
+      "postId": 2,
+      "parentId": "1703256818664user2",
+      "timeStamp": 1703394661439
     }
   ],
   "users": [
@@ -1330,7 +1386,7 @@
       "id": "user1",
       "password": "rkawk",
       "email": "bori_heo@naver.com",
-      "nickname": "1번유저"
+      "nickname": "씨앗감자"
     },
     {
       "id": "user2",

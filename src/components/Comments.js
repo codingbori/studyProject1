@@ -1,19 +1,12 @@
 import "./Comments.css";
 import { useEffect, useState } from "react";
 
-const commentFrame = (comment, depth = 0) => {
-  let isReply = "";
-  if (depth) isReply = "r";
-  return (
-    <div className={"comment " + isReply} key={isReply + comment.id}>
-      <p className="comment-user">{comment.userId}</p>
-      <p className="comment-text">{comment.text}</p>
-    </div>
-  );
-};
-
-const Comments = () => {
+const Comments = (props) => {
   const [comments, setComments] = useState([]);
+  const [commentNum, setCommentNum] = useState(0);
+  const postId = props.postId;
+  const parentId = props.parentId;
+  const depth = props.depth;
 
   const addComment = (e) => {
     e.preventDefault();
@@ -23,8 +16,8 @@ const Comments = () => {
       id: String(time) + id,
       userId: id,
       text: e.target.comment.value,
-      postId: JSON.parse(localStorage.getItem("postingNow")),
-      parentId: 0,
+      postId: postId,
+      parentId: parentId,
       timeStamp: time,
     };
     e.target.comment.value = "";
@@ -38,55 +31,64 @@ const Comments = () => {
   };
 
   useEffect(() => {
-    const postId = JSON.parse(localStorage.getItem("postingNow"));
     async function fetchComments() {
       try {
         const response = await fetch(
-          `http://localhost:8000/comments?postId=${postId}`
+          `http://localhost:8000/comments?postId=${postId}&parentId=${parentId}`
         );
         const datas = await response.json();
         setComments(datas);
+        setCommentNum(datas.length);
       } catch (err) {
         console.log(err);
         throw err;
       }
     }
-    fetchComments();
+    if (depth < 2) {
+      fetchComments();
+    }
   }, []);
 
   const commentList = [];
   comments.forEach((comment) => {
-    if (comment.parentId === 0) {
-      commentList.push(commentFrame(comment));
-    } else {
-      for (let i = 0; i < commentList.length; i++) {
-        const c = commentList[i];
-        if (Number(c.key) === Number(comment.parentId)) {
-          while (commentList[i + 1]?.key[0] === "r") {
-            i += 1;
-          }
-          commentList.splice(i + 1, 0, commentFrame(comment, 1));
-          break;
-        }
-      }
-    }
+    commentList.push(
+      <div className="comment" key={comment.id}>
+        <p className="comment-user">{comment.userId}</p>
+        <p className="comment-text">{comment.text}</p>
+        <Comments postId={postId} parentId={comment.id} depth={depth + 1} />
+      </div>
+    );
   });
+
+  const addActive = (e) => {
+    const target = e.target.parentNode.children[1].classList;
+    if (target.contains("active")) {
+      target.remove("active");
+    } else {
+      target.add("active");
+    }
+  };
 
   return (
     <>
-      <div className="add-comment">
-        <form onSubmit={addComment}>
-          <textarea
-            id="comment"
-            name="comment"
-            rows="3"
-            cols="50"
-            placeholder="모양만 있는 댓글작성란"
-          ></textarea>
-          <input type="submit" value="작성" />
-        </form>
+      <div className="comments-area">
+        {depth === 1 && <button onClick={addActive}>답글({commentNum})</button>}
+        <div className={`comments-box ${depth ? "reply" : ""}`}>
+          {depth < 2 && (
+            <form onSubmit={addComment} className="add-comment">
+              <textarea
+                id="comment"
+                name="comment"
+                rows="3"
+                cols="50"
+                placeholder="댓글을 작성하세요"
+              ></textarea>
+              <input type="submit" value="작성" />
+            </form>
+          )}
+          <div className="commentList">{commentList}</div>
+        </div>
       </div>
-      <div className="comments">{commentList}</div>
     </>
   );
 };

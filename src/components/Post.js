@@ -38,7 +38,7 @@ const Post = () => {
         <p className="post-text">{p.text}</p>
         <div className="post-image">{postImages}</div>
       </article>
-      <Comments />
+      <Comments postId={postId} parentId="0" depth={0} />
     </>
   );
 };
