@@ -98,11 +98,21 @@ const Header = (props) => {
         </div>
         <h1 className="header-title">싱싱감자</h1>
         <div id="search-box">
+          <button
+            className="write"
+            onClick={() => {
+              props.setPost([]);
+              navigate("/write/");
+            }}
+          >
+            글쓰기
+          </button>
           <form onSubmit={searchText}>
             <input
               type="text"
               name="search"
               placeholder="제목, 내용을 입력하세요"
+              className="search-input"
             />
             <button type="submit">검색</button>
           </form>

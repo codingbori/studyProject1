@@ -7,6 +7,7 @@ const Home = (props) => {
       <Header
         setSearch={props.setSearch}
         setCurrentPage={props.setCurrentPage}
+        setPost={props.setPost}
       />
       <Outlet />
     </>

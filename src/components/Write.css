@@ -1,0 +1,25 @@
+.writing-page {
+	padding: 20px;
+}
+
+.writing-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-indent: 10px;
+}
+
+#category-select {
+	width: 80px;
+}
+
+#writing-title {
+	width: calc(100% - 100px);
+}
+
+#writing-text {
+	display: block;
+	width: 100%;
+	height: calc(100vh - 140px);
+	margin: 20px 0;
+}

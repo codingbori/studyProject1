@@ -12,14 +12,14 @@ const Posts = (props) => {
     props.currentPage,
     props.setCurrentPage,
   ];
+  const search = props.search;
+  const [sort, setSort] = useState("timeStamp");
 
   useEffect(() => {
     async function getTotalCount() {
       try {
-        const response = props.search.length
-          ? await fetch(
-              `http://localhost:8000/posts?${props.search[0]}=${props.search[1]}`
-            )
+        const response = search.length
+          ? await fetch(`http://localhost:8000/posts?${search[0]}=${search[1]}`)
           : await fetch(
               `http://localhost:8000/posts?${
                 category === "전체" ? "" : `category=${category}`
@@ -33,7 +33,8 @@ const Posts = (props) => {
       }
     }
     getTotalCount();
-  }, [category, props.search]);
+    props.setPost([]);
+  }, [category, search]);
 
   //페이지 변경
   useEffect(() => {
@@ -41,12 +42,14 @@ const Posts = (props) => {
       try {
         const response = props.search.length
           ? await fetch(
-              `http://localhost:8000/posts?${props.search[0]}=${props.search[1]}&_page=${currentPage}&_limit=${PAGE.limit}`
+              `http://localhost:8000/posts?${props.search[0]}=${props.search[1]}&_page=${currentPage}&_limit=${PAGE.limit}&_sort=${sort}&_order=desc`
             )
           : await fetch(
               `http://localhost:8000/posts?${
                 category === "전체" ? "" : `category=${category}`
-              }&_page=${currentPage}&_limit=${PAGE.limit}`
+              }&_page=${currentPage}&_limit=${
+                PAGE.limit
+              }&_sort=${sort}&_order=desc`
             );
         const datas = await response.json();
         setPostArr(datas);
@@ -56,7 +59,7 @@ const Posts = (props) => {
       }
     }
     getPosts();
-  }, [props.search, currentPage, category]);
+  }, [props.search, currentPage, category, sort]);
 
   const addActive = (e) => {
     if (e.target.innerText === category) return;
@@ -76,7 +79,7 @@ const Posts = (props) => {
           <Link
             to="/posting/"
             onClick={() => {
-              window.localStorage.setItem("postingNow", post.id);
+              props.setPost(post);
               fetch(`http://localhost:8000/posts/${post.id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -100,14 +103,18 @@ const Posts = (props) => {
   return (
     <>
       {!props.search.length && (
-        <nav className="category-nav">
-          <ul className="category" onClick={addActive}>
-            <li className="active">전체</li>
-            <li>일상</li>
-            <li>정보</li>
-            <li>공구</li>
-          </ul>
-        </nav>
+        <>
+          <nav className="category-nav">
+            <ul className="category" onClick={addActive}>
+              <li className="active">전체</li>
+              <li>일상</li>
+              <li>정보</li>
+              <li>공구</li>
+            </ul>
+          </nav>
+          <button onClick={() => setSort("timeStamp")}>최신순</button>
+          <button onClick={() => setSort("clicked")}>조회순</button>
+        </>
       )}
       <main className="post-main">{postList}</main>
       <footer className="paging">

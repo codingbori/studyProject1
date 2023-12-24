@@ -7,13 +7,12 @@ const Comments = (props) => {
   const postId = props.postId;
   const parentId = props.parentId;
   const depth = props.depth;
+  const id = JSON.parse(localStorage.getItem("2023user")).id;
 
   const addComment = (e) => {
     e.preventDefault();
     const time = Date.now();
-    const id = JSON.parse(localStorage.getItem("2023user")).id;
     const data = {
-      id: String(time) + id,
       userId: id,
       text: e.target.comment.value,
       postId: postId,
@@ -49,12 +48,31 @@ const Comments = (props) => {
     }
   }, []);
 
+  const deleteComment = (e) => {
+    fetch(`http://localhost:8000/comments/${e.target.value}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    }).catch((err) => console.log(err));
+    window.alert("댓글이 삭제되었습니다.");
+    fetch(
+      `http://localhost:8000/comments?postId=${postId}&parentId=${parentId}`
+    )
+      .then((response) => response.json())
+      .then((datas) => setComments(datas))
+      .catch((err) => console.log(err));
+  };
+
   const commentList = [];
   comments.forEach((comment) => {
     commentList.push(
       <div className="comment" key={comment.id}>
         <p className="comment-user">{comment.userId}</p>
         <p className="comment-text">{comment.text}</p>
+        {comment.userId === id && (
+          <button onClick={deleteComment} value={comment.id}>
+            삭제하기
+          </button>
+        )}
         <Comments postId={postId} parentId={comment.id} depth={depth + 1} />
       </div>
     );

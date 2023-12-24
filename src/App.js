@@ -8,10 +8,12 @@ import LoginPage from "./components/LoginPage";
 import Membership from "./components/Membership";
 import FindPassword from "./components/FindPassword";
 import MyPage, { Profile, ChangePw } from "./components/MyPage";
+import Write from "./components/Write";
 
 const App = () => {
   const [search, setSearch] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [post, setPost] = useState([]);
 
   return (
     <BrowserRouter>
@@ -19,7 +21,11 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Home setSearch={setSearch} setCurrentPage={setCurrentPage} />
+            <Home
+              setSearch={setSearch}
+              setCurrentPage={setCurrentPage}
+              setPost={setPost}
+            />
           }
         >
           <Route
@@ -29,10 +35,14 @@ const App = () => {
                 search={search}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
+                setPost={setPost}
               />
             }
           />
-          <Route path="/posting/" element={<Post />} />
+          <Route
+            path="/posting/"
+            element={<Post post={post} setPost={setPost} />}
+          />
         </Route>
 
         <Route path="/myPage/" element={<MyPage />}>
@@ -44,7 +54,7 @@ const App = () => {
           <Route path="/login/findpassword/" element={<FindPassword />} />
           <Route path="/login/membership/" element={<Membership />} />
         </Route>
-        <Route path="/write/" element={<h2>글쓰기 페이지</h2>} />
+        <Route path="/write/" element={<Write p={post} />} />
       </Routes>
     </BrowserRouter>
   );

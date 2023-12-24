@@ -17,7 +17,7 @@
       ],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 6
+      "clicked": 12
     },
     {
       "id": 2,
@@ -36,7 +36,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 3
+      "clicked": 7
     },
     {
       "id": 3,
@@ -55,7 +55,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 5
+      "clicked": 24
     },
     {
       "id": 4,
@@ -65,7 +65,7 @@
       "imageUrl": [],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 5
+      "clicked": 12
     },
     {
       "id": 5,
@@ -84,7 +84,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 1
+      "clicked": 4
     },
     {
       "id": 6,
@@ -160,7 +160,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 1
+      "clicked": 3
     },
     {
       "id": 10,
@@ -220,7 +220,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 2
     },
     {
       "id": 14,
@@ -280,7 +280,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 18,
@@ -295,7 +295,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 19,
@@ -325,7 +325,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 21,
@@ -370,7 +370,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 2
     },
     {
       "id": 24,
@@ -385,7 +385,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 2
     },
     {
       "id": 25,
@@ -670,7 +670,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 1
+      "clicked": 2
     },
     {
       "id": 44,
@@ -1195,7 +1195,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 79,
@@ -1240,7 +1240,47 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 3
+    },
+    {
+      "userid": "user1",
+      "title": "1번감자가 쓰는 새로운 글",
+      "text": "  들여쓰기 작동하나요?\n줄바꿈 작동하나요?\n\n이중 줄바꿈 작동하나요?\n<button>HTML 태그 작동하나요? </button>",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703418790428,
+      "clicked": 6,
+      "id": 82
+    },
+    {
+      "userid": "user1",
+      "title": "1번감자의 글(수정됨)",
+      "text": "글 수정하기 기능 사용을 위한 대비. 수정하기 기능이 작동하는지 시험해봅시다. 카테고리, 제목, 내용을 바꿀 것입니다.",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703421664546,
+      "clicked": 6,
+      "id": 83
+    },
+    {
+      "userid": "user1",
+      "title": "카테고리 확인용 글",
+      "text": "카테고리확인: 일상",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1703425167307,
+      "clicked": 1,
+      "id": 84
+    },
+    {
+      "userid": "user1",
+      "title": "오류보고",
+      "text": "글쓰기 버튼 클릭 후 뒤로가기를 누르면 에러 뜸 / posting페이지에서 새로고침 누르면 에러남 / 대댓글 달고 삭제하면 댓글 리스트 리렌더링 안 됨. / 댓글 need key prop 제발그만",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703426346789,
+      "clicked": 5,
+      "id": 86
     }
   ],
   "comments": [
@@ -1333,14 +1373,6 @@
       "timeStamp": 1703261427511
     },
     {
-      "id": "1703302277832user1",
-      "userId": "user1",
-      "text": "새 댓글",
-      "postId": 3,
-      "parentId": "0",
-      "timeStamp": 1703302277832
-    },
-    {
       "id": "1703302285320user1",
       "userId": "user1",
       "text": "새 대댓글 달기",
@@ -1379,6 +1411,45 @@
       "postId": 2,
       "parentId": "1703256818664user2",
       "timeStamp": 1703394661439
+    },
+    {
+      "id": "1703418847015user1",
+      "userId": "user1",
+      "text": "1개 이상의 들여쓰기와 줄바꿈은 모두 1스페이스로 바뀌고, HTML 태그는 작동하지 않습니다.",
+      "postId": 82,
+      "parentId": "0",
+      "timeStamp": 1703418847015
+    },
+    {
+      "userId": "user1",
+      "text": "되나?",
+      "postId": 3,
+      "parentId": 8,
+      "timeStamp": 1703419964381,
+      "id": 11
+    },
+    {
+      "userId": "user1",
+      "text": "얘도 되나?",
+      "postId": 3,
+      "parentId": 9,
+      "timeStamp": 1703419970269,
+      "id": 12
+    },
+    {
+      "userId": "user1",
+      "text": "버튼을 없애면 더 나을까?",
+      "postId": 81,
+      "parentId": "0",
+      "timeStamp": 1703427147550,
+      "id": 13
+    },
+    {
+      "userId": "user1",
+      "text": "대댓글도 한 번 삭제해봅시다.",
+      "postId": 81,
+      "timeStamp": 1703427159607,
+      "id": 14
     }
   ],
   "users": [
@@ -1386,7 +1457,7 @@
       "id": "user1",
       "password": "rkawk",
       "email": "bori_heo@naver.com",
-      "nickname": "작동한듯"
+      "nickname": "1번유저"
     },
     {
       "id": "user2",

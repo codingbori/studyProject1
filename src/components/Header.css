@@ -32,8 +32,13 @@
 	justify-content: space-between;
 }
 
-#search-box > input {
-	width: calc(100% - 80px);
+#search-box > form {
+	width: calc(100% - 70px);
+}
+
+.search-input {
+	width: calc(100% - 70px);
+	margin-right: 10px;
 	text-indent: 8px;
 }
 
