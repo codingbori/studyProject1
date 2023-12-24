@@ -4,20 +4,27 @@ import PAGE from "../assets/pagingCount";
 import Paging from "./Paging";
 import { useEffect, useState } from "react";
 
-const Posts = () => {
+const Posts = (props) => {
   const [category, setCategory] = useState("전체");
-  const [currentPage, setCurrentPage] = useState(1);
   const [postArr, setPostArr] = useState([]);
   const [totalCount, setTotalCount] = useState(26);
+  const [currentPage, setCurrentPage] = [
+    props.currentPage,
+    props.setCurrentPage,
+  ];
 
   useEffect(() => {
     async function getTotalCount() {
       try {
-        const response = await fetch(
-          `http://localhost:8000/posts?${
-            category === "전체" ? "" : `category=${category}`
-          }`
-        );
+        const response = props.search.length
+          ? await fetch(
+              `http://localhost:8000/posts?${props.search[0]}=${props.search[1]}`
+            )
+          : await fetch(
+              `http://localhost:8000/posts?${
+                category === "전체" ? "" : `category=${category}`
+              }`
+            );
         const datas = await response.json();
         setTotalCount(datas.length);
       } catch (err) {
@@ -26,17 +33,21 @@ const Posts = () => {
       }
     }
     getTotalCount();
-  }, [category]);
+  }, [category, props.search]);
 
   //페이지 변경
   useEffect(() => {
     async function getPosts() {
       try {
-        const response = await fetch(
-          `http://localhost:8000/posts?${
-            category === "전체" ? "" : `category=${category}`
-          }&_page=${currentPage}&_limit=${PAGE.limit}`
-        );
+        const response = props.search.length
+          ? await fetch(
+              `http://localhost:8000/posts?${props.search[0]}=${props.search[1]}&_page=${currentPage}&_limit=${PAGE.limit}`
+            )
+          : await fetch(
+              `http://localhost:8000/posts?${
+                category === "전체" ? "" : `category=${category}`
+              }&_page=${currentPage}&_limit=${PAGE.limit}`
+            );
         const datas = await response.json();
         setPostArr(datas);
       } catch (err) {
@@ -45,7 +56,7 @@ const Posts = () => {
       }
     }
     getPosts();
-  }, [currentPage, category]);
+  }, [props.search, currentPage, category]);
 
   const addActive = (e) => {
     if (e.target.innerText === category) return;
@@ -88,14 +99,16 @@ const Posts = () => {
 
   return (
     <>
-      <nav className="category-nav">
-        <ul className="category" onClick={addActive}>
-          <li className="active">전체</li>
-          <li>일상</li>
-          <li>정보</li>
-          <li>공구</li>
-        </ul>
-      </nav>
+      {!props.search.length && (
+        <nav className="category-nav">
+          <ul className="category" onClick={addActive}>
+            <li className="active">전체</li>
+            <li>일상</li>
+            <li>정보</li>
+            <li>공구</li>
+          </ul>
+        </nav>
+      )}
       <main className="post-main">{postList}</main>
       <footer className="paging">
         <Paging

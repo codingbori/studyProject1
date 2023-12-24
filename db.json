@@ -3,7 +3,7 @@
     {
       "id": 1,
       "userid": "user1",
-      "title": "이젠 뭔가 되는 기분이 들어",
+      "title": "ID: user1 PW: 감자",
       "text": "네이트판에서 맨날 보던 그 포멧 다시 보니 감회가 새롭네요. 예쁘게 만드는 건 디자이너가 알아서 하겠지... 계획서랑 비슷한 모양새를 내기 위해서 강아지 그림도 추가해줄 거예요.",
       "imageUrl": [
         {
@@ -17,12 +17,12 @@
       ],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 3
+      "clicked": 6
     },
     {
       "id": 2,
       "userid": "user1",
-      "title": "아냐 되지 않아",
+      "title": "검색어 테스트: 감자",
       "text": "이미지 왜 연결이 되지 않죠?: create-react-app의 문제로, public 폴더에 넣으니까 돌아간다. 실전에서는 서버에 올릴 테니까 괜찮겠지?",
       "imageUrl": [
         {
@@ -89,8 +89,8 @@
     {
       "id": 6,
       "userid": "user2",
-      "title": "테스트6",
-      "text": "loremlorem",
+      "title": "내용 검색 테스트 페이지1",
+      "text": "감자 고구마 옥수수는 모두 아메리카산 구황작물이다.",
       "imageUrl": [
         {
           "src": "",
@@ -108,8 +108,8 @@
     {
       "id": 7,
       "userid": "user2",
-      "title": "테스트7",
-      "text": "loremlorem",
+      "title": "농심 포테토칩은 감자칩이다.",
+      "text": "그린은 소금맛이고 블루는 트리플치즈맛이다. 내용 검색을 위해서 내용에도 감자를 하나 쓰려고 한다.",
       "imageUrl": [
         {
           "src": "",
@@ -127,8 +127,8 @@
     {
       "id": 8,
       "userid": "user3",
-      "title": "테스트8",
-      "text": "loremlorem",
+      "title": "오리온 포카칩은 감자칩이다.",
+      "text": "포카칩 블루는 소금맛이고 그린은 양파맛이다. 제조시기에 따라 생감자와 햇감자로 나뉘는데 내 취향은 생감자이다.",
       "imageUrl": [
         {
           "src": "",
@@ -141,13 +141,13 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 2
     },
     {
       "id": 9,
       "userid": "user3",
-      "title": "테스트9",
-      "text": "loremlorem",
+      "title": "내용 검색 테스트 페이지2",
+      "text": "전 세계에는 다양한 종류의 감자칩이 있다.",
       "imageUrl": [
         {
           "src": "",
@@ -205,7 +205,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 8
     },
     {
       "id": 13,
@@ -415,7 +415,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 27,
@@ -670,7 +670,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 44,
@@ -1386,7 +1386,7 @@
       "id": "user1",
       "password": "rkawk",
       "email": "bori_heo@naver.com",
-      "nickname": "씨앗감자"
+      "nickname": "작동한듯"
     },
     {
       "id": "user2",
@@ -1398,7 +1398,7 @@
       "id": "user3",
       "password": "rkawk",
       "email": "bori_heo@naver.com",
-      "nickname": "3번유저"
+      "nickname": "3번감자"
     },
     {
       "id": "user5",

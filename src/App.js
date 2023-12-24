@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
@@ -10,11 +10,28 @@ import FindPassword from "./components/FindPassword";
 import MyPage, { Profile, ChangePw } from "./components/MyPage";
 
 const App = () => {
+  const [search, setSearch] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route index element={<Posts />} />
+        <Route
+          path="/"
+          element={
+            <Home setSearch={setSearch} setCurrentPage={setCurrentPage} />
+          }
+        >
+          <Route
+            index
+            element={
+              <Posts
+                search={search}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            }
+          />
           <Route path="/posting/" element={<Post />} />
         </Route>
 
