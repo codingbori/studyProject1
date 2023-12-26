@@ -17,7 +17,7 @@
       ],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 14
+      "clicked": 15
     },
     {
       "id": 2,
@@ -36,7 +36,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 10
+      "clicked": 11
     },
     {
       "id": 3,
@@ -55,7 +55,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 25
+      "clicked": 54
     },
     {
       "id": 4,
@@ -175,7 +175,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 1
+      "clicked": 2
     },
     {
       "id": 11,
@@ -1249,7 +1249,7 @@
       "imageUrl": [],
       "category": "정보",
       "timeStamp": 1703421664546,
-      "clicked": 10,
+      "clicked": 12,
       "id": 83
     },
     {
@@ -1259,7 +1259,7 @@
       "imageUrl": [],
       "category": "일상",
       "timeStamp": 1703425167307,
-      "clicked": 13,
+      "clicked": 16,
       "id": 84
     },
     {
@@ -1269,169 +1269,184 @@
       "imageUrl": [],
       "category": "정보",
       "timeStamp": 1703426346789,
-      "clicked": 40,
+      "clicked": 70,
       "id": 86
     }
   ],
   "comments": [
     {
-      "id": 1,
       "userId": "user1",
-      "text": "댓글을 적어요",
-      "postId": 3,
-      "parentId": 0,
-      "timeStamp": 1
-    },
-    {
-      "id": 2,
-      "userId": "user2",
-      "text": "댓글을 적어요2",
-      "postId": 3,
-      "parentId": 0,
-      "timeStamp": 1
-    },
-    {
-      "id": 3,
-      "userId": "user3",
-      "text": "댓글을 적어요3",
-      "postId": 3,
-      "parentId": 0,
-      "timeStamp": 1
-    },
-    {
-      "id": 4,
-      "userId": "user1",
-      "text": "대댓글1",
-      "postId": 3,
+      "text": "답글1",
+      "postId": "3",
       "parentId": 1,
-      "timeStamp": 1
+      "timeStamp": 1703593689579,
+      "id": 6
     },
     {
-      "id": 5,
-      "userId": "user2",
-      "text": "대댓글2",
-      "postId": 3,
-      "parentId": 3,
-      "timeStamp": 1
-    },
-    {
-      "id": 6,
-      "userId": "user3",
-      "text": "대댓글3",
-      "postId": 3,
-      "parentId": 3,
-      "timeStamp": 1
-    },
-    {
-      "id": "1703256818664user2",
-      "userId": "user2",
-      "text": "도전!",
-      "postId": 2,
-      "parentId": 0,
-      "timeStamp": 1703256818664
-    },
-    {
-      "id": "1703257020468user2",
-      "userId": "user2",
-      "text": "댓글란 자동조정!",
-      "postId": 2,
-      "parentId": 0,
-      "timeStamp": 1703257020468
-    },
-    {
-      "id": "1703257310813user2",
-      "userId": "user2",
-      "text": "자동조정재도전!",
-      "postId": 2,
-      "parentId": 0,
-      "timeStamp": 1703257310813
-    },
-    {
-      "id": "1703257447945user2",
-      "userId": "user2",
-      "text": "비어라!",
-      "postId": 2,
-      "parentId": 0,
-      "timeStamp": 1703257447945
-    },
-    {
-      "id": "1703261427511user2",
-      "userId": "user2",
-      "text": "구린 css는 나중에 조정하도록 합시다.",
-      "postId": 2,
-      "parentId": 0,
-      "timeStamp": 1703261427511
-    },
-    {
-      "id": "1703302285320user1",
       "userId": "user1",
-      "text": "새 대댓글 달기",
-      "postId": 3,
+      "text": "답글2",
+      "postId": "3",
       "parentId": 1,
-      "timeStamp": 1703302285320
-    },
-    {
-      "id": "1703302292309user1",
-      "userId": "user1",
-      "text": "감동이죠",
-      "postId": 3,
-      "parentId": 1,
-      "timeStamp": 1703302292309
-    },
-    {
-      "id": "1703308039924user1",
-      "userId": "user1",
-      "text": "댓글달기",
-      "postId": 1,
-      "parentId": "0",
-      "timeStamp": 1703308039924
-    },
-    {
-      "id": "1703308047575user1",
-      "userId": "user1",
-      "text": "대댓글달기",
-      "postId": 1,
-      "parentId": "1703308039924user1",
-      "timeStamp": 1703308047575
-    },
-    {
-      "id": "1703394661439user1",
-      "userId": "user1",
-      "text": "대댓글 추가 도전",
-      "postId": 2,
-      "parentId": "1703256818664user2",
-      "timeStamp": 1703394661439
+      "timeStamp": 1703593695596,
+      "id": 7
     },
     {
       "userId": "user1",
-      "text": "되나?",
-      "postId": 3,
-      "parentId": 8,
-      "timeStamp": 1703419964381,
+      "text": "답글1",
+      "postId": "3",
+      "parentId": 4,
+      "timeStamp": 1703594529297,
+      "id": 8
+    },
+    {
+      "userId": "user1",
+      "text": "답글2",
+      "postId": "3",
+      "parentId": 4,
+      "timeStamp": 1703594533589,
+      "id": 9
+    },
+    {
+      "userId": "user1",
+      "text": "대댓1",
+      "postId": "3",
+      "parentId": 5,
+      "timeStamp": 1703594591238,
+      "id": 10
+    },
+    {
+      "userId": "user1",
+      "text": "대댓2",
+      "postId": "3",
+      "parentId": 5,
+      "timeStamp": 1703594594739,
       "id": 11
     },
     {
-      "userId": "user1",
-      "text": "얘도 되나?",
-      "postId": 3,
-      "parentId": 9,
-      "timeStamp": 1703419970269,
+      "userId": null,
+      "text": null,
+      "postId": "3",
+      "parentId": "0",
+      "timeStamp": 1703594743875,
       "id": 12
     },
     {
-      "userId": "user1",
-      "text": "버튼을 없애면 더 나을까?",
-      "postId": 81,
+      "userId": null,
+      "text": null,
+      "postId": "3",
       "parentId": "0",
-      "timeStamp": 1703427147550,
+      "timeStamp": 1703594748504,
       "id": 13
     },
     {
       "userId": "user1",
-      "text": "대댓글도 한 번 삭제해봅시다.",
-      "postId": 81,
-      "timeStamp": 1703427159607,
+      "text": "대댓1",
+      "postId": "3",
+      "parentId": 12,
+      "timeStamp": 1703594752495,
       "id": 14
+    },
+    {
+      "userId": "user1",
+      "text": "답글달기1",
+      "postId": "3",
+      "parentId": 13,
+      "timeStamp": 1703595246229,
+      "id": 15
+    },
+    {
+      "userId": "user1",
+      "text": "답그랃ㄹ",
+      "postId": "3",
+      "parentId": 13,
+      "timeStamp": 1703595251019,
+      "id": 16
+    },
+    {
+      "userId": "user2",
+      "text": "로그인하세요 팝업 띄우기",
+      "postId": "86",
+      "parentId": "0",
+      "timeStamp": 1703597356314,
+      "id": 17
+    },
+    {
+      "userId": "user2",
+      "text": "로그오프 상태에서 대댓글이 어디까지 보이나 확인하기",
+      "postId": "86",
+      "timeStamp": 1703597384737,
+      "id": 18
+    },
+    {
+      "userId": "user2",
+      "text": "유저 아이디 닉네임으로 보일 수 있도록 일괄치환",
+      "postId": "86",
+      "parentId": "0",
+      "timeStamp": 1703597428350,
+      "id": 19
+    },
+    {
+      "userId": "user2",
+      "text": "글 옆에 댓글 갯수 띄우기",
+      "postId": "86",
+      "parentId": "0",
+      "timeStamp": 1703597455676,
+      "id": 20
+    },
+    {
+      "userId": "user2",
+      "text": "비로그인 상태에서 댓글 및 대댓글 보이는 모양 확인",
+      "postId": "86",
+      "parentId": 17,
+      "timeStamp": 1703597536813,
+      "id": 21
+    },
+    {
+      "userId": "user2",
+      "text": "textbox에 넣어야 하는 글자수 제한",
+      "postId": "86",
+      "parentId": "0",
+      "timeStamp": 1703597588345,
+      "id": 22
+    },
+    {
+      "userId": "user2",
+      "text": "아 맞다 이미지넣기 너무 끔찍해서 외면하고 있었네",
+      "postId": "86",
+      "timeStamp": 1703597613537,
+      "id": 23
+    },
+    {
+      "userId": "user2",
+      "text": "끔찍한 댓글 css좀 만지기",
+      "postId": "86",
+      "parentId": "0",
+      "timeStamp": 1703597630937,
+      "id": 24
+    },
+    {
+      "userId": "user2",
+      "text": "아맞다 이미지넣기",
+      "postId": "86",
+      "parentId": 22,
+      "timeStamp": 1703597667257,
+      "id": 25
+    },
+    {
+      "userId": "user2",
+      "text": "텍스트박스 안에서 <p>태그 적용하기",
+      "postId": "86",
+      "parentId": 22,
+      "timeStamp": 1703597741737,
+      "id": 26
+    },
+    {
+      "userId": "user1",
+      "text": "댓글 css를 확인해봅시다",
+      "postId": "1",
+      "parentId": "0",
+      "timeStamp": 1703600658622,
+      "id": 27
     }
   ],
   "users": [
@@ -1439,13 +1454,13 @@
       "id": "user1",
       "password": "rkawk",
       "email": "bori_heo@naver.com",
-      "nickname": "1번유저"
+      "nickname": "햇감자"
     },
     {
       "id": "user2",
       "password": "rkawk",
       "email": "bori_heo@naver.com",
-      "nickname": "2번유저"
+      "nickname": "햇햇감자"
     },
     {
       "id": "user3",

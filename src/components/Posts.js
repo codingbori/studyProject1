@@ -14,8 +14,11 @@ const Posts = () => {
   const [sort, setSort] = useState("timeStamp");
 
   const setSortAnd = (e) => {
+    if (!e.target.value) return;
+    for (const child of e.currentTarget.children) {
+      child.className = "";
+    }
     setSort(e.target.value);
-    console.log(e.target);
     e.target.className = "active";
   };
 
@@ -80,12 +83,12 @@ const Posts = () => {
 
   return (
     <>
-      <button value="timeStamp" onClick={setSortAnd}>
-        최신순
-      </button>
-      <button value="clicked" onClick={setSortAnd}>
-        조회순
-      </button>
+      <div className="sort-button" onClick={setSortAnd}>
+        <button value="timeStamp" className="active">
+          최신순
+        </button>
+        <button value="clicked">조회순</button>
+      </div>
       <main className="post-main">{postList}</main>
       <footer className="paging">
         <Paging totalCount={totalCount} currentPage={currentPage} />

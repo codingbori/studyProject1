@@ -1,4 +1,4 @@
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import makeTableRow from "../assets/tools";
 import "./MyPage.css";
 
@@ -53,16 +53,20 @@ const ChangePw = () => {
 };
 
 const changeNickname = (e) => {
-  if (e.target === e.currentTarget.children[2].children[0]) {
-    const userID = JSON.parse(localStorage.getItem("2023user")).id;
-    fetch(`http://localhost:8000/users/${userID}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nickname: e.currentTarget.children[1].children[0].value,
-      }),
-    }).catch((err) => console.log(err));
-  }
+  const newNickname = document.getElementById("nickname");
+  const userID = JSON.parse(localStorage.getItem("2023user")).id;
+  fetch(`http://localhost:8000/users/${userID}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nickname: newNickname.value }),
+  })
+    .then((res) => res.json())
+    .then((datas) => {
+      window.localStorage.setItem("2023user", JSON.stringify(datas));
+    })
+    .catch((err) => console.log(err));
+
+  window.alert("닉네임이 변경되었습니다.");
 };
 
 const Profile = () => {
@@ -73,20 +77,24 @@ const Profile = () => {
       <p className="mypage-desc">나의 프로필을 확인하고 수정할 수 있습니다.</p>
       <table className="profile-card">
         <tbody>
-          <tr onClick={changeNickname}>
+          <tr>
             <td rowSpan="2">그림1</td>
             <td>
-              <input type="text" placeholder="작동하지 않음" />
+              <input
+                id="nickname"
+                type="text"
+                defaultValue={userdata.nickname}
+                readOnly={false}
+              />
             </td>
             <td>
-              <button>변경하기</button>
+              <button id="nickname-button" onClick={changeNickname}>
+                변경하기
+              </button>
             </td>
           </tr>
           <tr>
-            <td>{userdata.email}</td>
-            <td>
-              <button>변경하기</button>
-            </td>
+            <td colSpan="2">{userdata.email}</td>
           </tr>
           <tr>
             <td>

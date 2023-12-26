@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./Header.css";
 
-//person 어따쓰냐 애매하다.
 const Header = () => {
   let { searched, userid } = useParams();
   const [category, setCategory] = useState("전체");
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("2023user"));
-  const [person, changePerson] = useState(user);
+  const [islogin, setIslogin] = useState(Boolean(user));
   const choice = () => {
     const userbox = document.getElementsByClassName("user-info-box")[0];
     userbox.classList.add("active");
@@ -35,7 +34,7 @@ const Header = () => {
         <button
           onClick={() => {
             window.localStorage.setItem("2023user", null);
-            changePerson(null);
+            setIslogin(false);
           }}
         >
           로그아웃
@@ -83,7 +82,7 @@ const Header = () => {
           >
             A
           </div>
-          {!person && (
+          {!islogin && (
             <button
               onClick={() => {
                 navigate("/login/", { state: pathname });
@@ -92,7 +91,7 @@ const Header = () => {
               로그인하세요
             </button>
           )}
-          {person && (
+          {islogin && (
             <>
               <button
                 onClick={(e) => {
@@ -111,7 +110,11 @@ const Header = () => {
           <button
             className="write"
             onClick={() => {
-              navigate("/write/");
+              if (islogin) {
+                navigate("/write/");
+              } else {
+                console.log("로그인하세요 팝업을 띄웁니다.");
+              }
             }}
           >
             글쓰기

@@ -9,4 +9,11 @@ const makeTableRow = (text, type, name) => {
   );
 };
 
-export default makeTableRow;
+const getNickname = async (id) => {
+  return id;
+  const response = await fetch(`http://localhost:8000/users/${id}`);
+  const datas = await response.json();
+  console.log(datas.nickname);
+};
+
+export { makeTableRow as default, getNickname };

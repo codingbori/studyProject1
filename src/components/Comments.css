@@ -19,7 +19,12 @@
 	text-align: left;
 }
 
-.comment-user {
+.comment-owner {
+	display: flex;
+	justify-content: space-between;
+}
+
+.comment-owner * {
 	color: gray;
 	font-size: 0.8rem;
 	margin: 0;

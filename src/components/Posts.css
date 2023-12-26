@@ -17,6 +17,19 @@
 	font-weight: 700;
 }
 
+.sort-button {
+	text-align: right;
+}
+
+.sort-button > button {
+	margin-left:10px;
+}
+
+.sort-button > .active {
+	font-weight: 700;
+	color: blue;
+}
+
 /*main*/
 .post-main {
 	height: 190px;

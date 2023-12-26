@@ -7,10 +7,18 @@ const Comments = (props) => {
   const postId = props.postId;
   const parentId = props.parentId;
   const depth = props.depth;
-  const id = JSON.parse(localStorage.getItem("2023user")).id;
+
+  const id = JSON.parse(localStorage.getItem("2023user"))
+    ? JSON.parse(localStorage.getItem("2023user")).id
+    : false;
 
   const addComment = (e) => {
     e.preventDefault();
+    if (!id) {
+      console.log("로그인하세요를 띄웁니다");
+      return;
+    }
+
     const time = Date.now();
     const data = {
       userId: id,
@@ -66,13 +74,15 @@ const Comments = (props) => {
   comments.forEach((comment) => {
     commentList.push(
       <div className="comment" key={comment.id}>
-        <p className="comment-user">{comment.userId}</p>
+        <div className="comment-owner">
+          <p className="comment-user">{comment.userId}</p>
+          {comment.userId === id && (
+            <button onClick={deleteComment} value={comment.id}>
+              삭제하기
+            </button>
+          )}
+        </div>
         <p className="comment-text">{comment.text}</p>
-        {comment.userId === id && (
-          <button onClick={deleteComment} value={comment.id}>
-            삭제하기
-          </button>
-        )}
         <Comments postId={postId} parentId={comment.id} depth={depth + 1} />
       </div>
     );
