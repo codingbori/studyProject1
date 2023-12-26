@@ -58,11 +58,11 @@ const LoginPage = () => {
             <button style={{ background: "lightgreen" }}>네이버</button>
             <button
               style={{ background: "yellow" }}
-              // onClick={() =>
-              //   window.Kakao.Auth.authorize({
-              //     redirectUri: "https://2023community.netlify.app",
-              //   })
-              // }
+              onClick={() =>
+                window.Kakao.Auth.authorize({
+                  redirectUri: "https://2023community.netlify.app",
+                })
+              }
             >
               카카오
             </button>

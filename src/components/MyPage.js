@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import makeTableRow from "../assets/tools";
 import "./MyPage.css";
 
@@ -66,6 +66,7 @@ const changeNickname = (e) => {
 };
 
 const Profile = () => {
+  let { user } = useParams();
   const userdata = JSON.parse(localStorage.getItem("2023user"));
   return (
     <>
@@ -93,7 +94,9 @@ const Profile = () => {
               <button>삭제</button>
             </td>
             <td colSpan="2">
-              <Link to="/myPage/changePW/">비밀번호 변경하기</Link>
+              <Link to={"/mypage/" + user + "/changePW/"}>
+                비밀번호 변경하기
+              </Link>
             </td>
           </tr>
         </tbody>
@@ -103,6 +106,7 @@ const Profile = () => {
 };
 
 const MyPage = () => {
+  let { user } = useParams();
   return (
     <>
       <header className="mypage-header">
@@ -110,7 +114,7 @@ const MyPage = () => {
           <Link to="/">싱싱감자</Link>
         </h1>
         <h2 className="mypage-title">
-          <Link to="/myPage/">내 정보</Link>
+          <Link to={"/mypage/" + user}>내 정보</Link>
         </h2>
       </header>
       <main className="mypage-main">

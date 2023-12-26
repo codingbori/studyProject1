@@ -1,14 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
-const Home = (props) => {
+const Home = () => {
   return (
     <>
-      <Header
-        setSearch={props.setSearch}
-        setCurrentPage={props.setCurrentPage}
-        setPost={props.setPost}
-      />
+      <Header />
       <Outlet />
     </>
   );

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./Header.css";
 
-const Header = (props) => {
+//person 어따쓰냐 애매하다.
+const Header = () => {
+  let { searched, userid } = useParams();
+  const [category, setCategory] = useState("전체");
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("2023user"));
@@ -27,13 +30,11 @@ const Header = (props) => {
         <h2>{user.nickname}</h2>
         <p>{user.email}</p>
         <button>
-          <Link to="/myPage/">계정 관리</Link>
+          <Link to={"/mypage/" + user.id}>계정 관리</Link>
         </button>
         <button
           onClick={() => {
             window.localStorage.setItem("2023user", null);
-            props.setSearch([]);
-            props.setCurrentPage(1);
             changePerson(null);
           }}
         >
@@ -41,8 +42,7 @@ const Header = (props) => {
         </button>
         <button
           onClick={() => {
-            props.setSearch(["userid", user.id]);
-            props.setCurrentPage(1);
+            navigate("/mypost/" + user.id);
           }}
         >
           내가 쓴 글 보기
@@ -53,10 +53,22 @@ const Header = (props) => {
 
   const searchText = (e) => {
     e.preventDefault();
-    props.setSearch(["text_like", e.target.search.value]);
-    props.setCurrentPage(1);
-    e.target.search.value = "";
-    navigate("/");
+    navigate("/search/" + e.target.search.value);
+  };
+
+  const addActive = (e) => {
+    if (e.target.innerText === category) return;
+    setCategory(e.target.innerText);
+    for (const child of e.currentTarget.children) {
+      child.className = "";
+    }
+    e.target.className = "active";
+
+    if (e.target.innerText === "전체") {
+      navigate("/");
+    } else {
+      navigate(e.target.innerText);
+    }
   };
 
   return (
@@ -66,8 +78,6 @@ const Header = (props) => {
           <div
             className="button-home"
             onClick={() => {
-              props.setSearch([]);
-              props.setCurrentPage(1);
               navigate("/");
             }}
           >
@@ -101,7 +111,6 @@ const Header = (props) => {
           <button
             className="write"
             onClick={() => {
-              props.setPost([]);
               navigate("/write/");
             }}
           >
@@ -118,6 +127,16 @@ const Header = (props) => {
           </form>
         </div>
       </header>
+      {!(userid || searched) && (
+        <nav className="category-nav">
+          <ul className="category" onClick={addActive}>
+            <li className="active">전체</li>
+            <li>일상</li>
+            <li>정보</li>
+            <li>공구</li>
+          </ul>
+        </nav>
+      )}
     </>
   );
 };

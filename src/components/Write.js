@@ -1,21 +1,34 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Write.css";
+import { useEffect, useState } from "react";
 
-const Write = (props) => {
-  const p = props.p;
+const Write = () => {
   const navigate = useNavigate();
+  const [p, setP] = useState({});
+  const getPostId = useLocation().search;
+  let postId = new URLSearchParams(getPostId).get("id");
+
+  useEffect(() => {
+    const rewrite = async () => {
+      const response = await fetch(`http://localhost:8000/posts/${postId}`);
+      const datas = await response.json();
+      setP(datas);
+    };
+    if (postId) {
+      rewrite();
+    }
+  }, []);
 
   const posting = (e) => {
     e.preventDefault();
-    if (p.title) {
+    if (postId) {
       const data = {
         title: e.target.title.value,
         text: e.target.text.value,
         imageUrl: [],
         category: e.target.category.value,
       };
-
-      fetch(`http://localhost:8000/posts/${p.id}`, {
+      fetch(`http://localhost:8000/posts/${postId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -38,6 +51,7 @@ const Write = (props) => {
         body: JSON.stringify(data),
       }).catch((err) => console.log(err));
     }
+    window.alert(`${postId ? "수정" : "작성"}되었습니다.`);
     navigate("/");
   };
 
@@ -48,7 +62,7 @@ const Write = (props) => {
           <select
             name="category"
             id="category-select"
-            defaultValue={p.category ? p.category : ""}
+            defaultValue={postId ? p.category : ""}
           >
             <option>일상</option>
             <option>정보</option>
@@ -59,17 +73,17 @@ const Write = (props) => {
             name="title"
             id="writing-title"
             placeholder="제목을 입력하세요"
-            defaultValue={p ? p.title : null}
+            defaultValue={postId ? p.title : null}
             readOnly={false}
           />
         </div>
         <textarea
           name="text"
           id="writing-text"
-          defaultValue={p ? p.text : null}
+          defaultValue={postId ? p.text : null}
           readOnly={false}
         />
-        <input type="submit" value="작성하기" />
+        <input type="submit" value={postId ? "수정하기" : "작성하기"} />
       </form>
     </>
   );
