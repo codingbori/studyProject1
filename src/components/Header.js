@@ -15,6 +15,7 @@ const Header = () => {
       client_id: "a3a01ea791553ec41def1c7ac61278bf",
       "redirect-uri": "https://2023community.netlify.app",
       code: token,
+      client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
     },
   })
     .then((res) => res.json())
