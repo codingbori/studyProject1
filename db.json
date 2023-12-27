@@ -1265,11 +1265,11 @@
     {
       "userid": "user1",
       "title": "오류보고(2차수정)",
-      "text": "(클리어)글쓰기 버튼 클릭 후 뒤로가기를 누르면 에러 뜸 / (클리어)posting페이지에서 새로고침 누르면 에러남 / 대댓글 달고 삭제하면 댓글 리스트 리렌더링 안 됨. / 댓글 need key prop 제발그만",
+      "text": "Post.js페이지에서 id대신 nickname을 보여주려고 하면 react child cannot be object이러면서 에러남 아주 미치겠음\n\n\n/ 대댓글 달고 삭제하면 댓글 리스트 리렌더링 안 됨. / 댓글 need key prop 제발그만",
       "imageUrl": [],
-      "category": "정보",
+      "category": "일상",
       "timeStamp": 1703426346789,
-      "clicked": 70,
+      "clicked": 71,
       "id": 86
     }
   ],

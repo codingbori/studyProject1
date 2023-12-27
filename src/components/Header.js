@@ -3,6 +3,25 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
+  //카카오 로그인에 미친 사람
+  const getToken = useLocation().search;
+  let token = new URLSearchParams(getToken).get("code");
+  //토큰을 받아요~~
+  fetch("https://kauth.kakao.com/oauth/token", {
+    method: "POST",
+    headers: { "Content-type": "application/x-www-form-urlencoded" },
+    body: {
+      "grant-type": "authorization_code",
+      client_id: "a3a01ea791553ec41def1c7ac61278bf",
+      "redirect-uri": "https://2023community.netlify.app",
+      code: token,
+    },
+  })
+    .then((res) => res.json())
+    .then((datas) => console.log(datas));
+
+  //(끝)카카오 로그인에 미친 사람
+
   let { searched, userid } = useParams();
   const [category, setCategory] = useState("전체");
   const { pathname } = useLocation();
@@ -123,7 +142,7 @@ const Header = () => {
             <input
               type="text"
               name="search"
-              placeholder="제목, 내용을 입력하세요"
+              placeholder="내용을 입력하세요"
               className="search-input"
             />
             <button type="submit">검색</button>
