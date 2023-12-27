@@ -20,8 +20,8 @@ const Header = (props) => {
           },
           body: JSON.stringify({
             grant_type: "authorization_code",
-            client_id: "218bebf5ced41f1dc9e844779270ae3d",
-            redirect_uri: "http://localhost:3000",
+            client_id: "a3a01ea791553ec41def1c7ac61278bf", //restAPI key
+            redirect_uri: "https://2023community.netlify.app",
             code: code,
             client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
           }),
