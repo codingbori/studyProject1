@@ -3,28 +3,31 @@ import "./Post.css";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Post = () => {
+const Post = (props) => {
   const getPostId = useLocation().search;
   let postId = new URLSearchParams(getPostId).get("id");
   const navigate = useNavigate();
   const [p, setP] = useState({
-    id: "임시아이디",
-    userid: "임시유저",
-    title: "임시타이틀",
-    text: "임시텍스트",
+    id: "Temp",
+    title: "Temp",
+    text: "Temp",
     imageUrl: [],
-    category: "임시카테",
-    timeStamp: "000000",
-    clicked: "000000",
   });
-  const user = JSON.parse(localStorage.getItem("2023user")).id;
+  const [nick, setNick] = useState("user");
+  const user = JSON.parse(localStorage.getItem("2023user"))?.id || null;
 
   useEffect(() => {
     async function getPost() {
       try {
+        //데이터를 받아요
         const response = await fetch(`http://localhost:8000/posts/${postId}`);
         const datas = await response.json();
         setP(datas);
+        //닉네임을 바꿔요
+        fetch(`http://localhost:8000/users/${datas.userid}`)
+          .then((res) => res.json())
+          .then((data) => setNick(data.nickname));
+        //조회수를 늘려요
         fetch(`http://localhost:8000/posts/${postId}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -37,6 +40,12 @@ const Post = () => {
     }
     getPost();
   }, []);
+
+  const textLines = [];
+  const lineArr = p.text.split("\n");
+  lineArr.forEach((line) => {
+    textLines.push(<div className="post-text">{line}</div>);
+  });
 
   const postImages = [];
   if (p.imageUrl) {
@@ -62,8 +71,8 @@ const Post = () => {
     <>
       <article className="post">
         <h2 className="post-title">{p.title}</h2>
-        <p className="post-author">{p.userid}</p>
-        <p className="post-text">{p.text}</p>
+        <p className="post-author">{nick}</p>
+        {textLines}
         <div className="post-image">{postImages}</div>
         {p.userid === user && (
           <>
@@ -72,7 +81,12 @@ const Post = () => {
           </>
         )}
       </article>
-      <Comments postId={postId} parentId="0" depth={0} />
+      <Comments
+        postId={postId}
+        parentId="0"
+        depth={0}
+        setPopup={props.setPopup}
+      />
     </>
   );
 };

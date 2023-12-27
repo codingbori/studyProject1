@@ -19,9 +19,25 @@
 	text-align: left;
 }
 
+.comment.deleted {
+	background-color: lightgray;
+}
+
+.comment.deleted::before {
+	content: '삭제된 댓글입니다';
+	color: gray;
+	font-size: 0.8rem;
+	text-indent: 30px;
+	padding: 10px;
+}
+
 .comment-owner {
 	display: flex;
 	justify-content: space-between;
+}
+
+.comment-user {
+	flex-grow: 1;
 }
 
 .comment-owner * {

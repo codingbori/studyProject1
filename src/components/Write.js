@@ -21,6 +21,11 @@ const Write = () => {
 
   const posting = (e) => {
     e.preventDefault();
+    if (!e.target.title.value || !e.target.text.value) {
+      window.alert("제목 및 내용을 입력하세요");
+      return;
+    }
+
     if (postId) {
       const data = {
         title: e.target.title.value,
@@ -84,6 +89,7 @@ const Write = () => {
           readOnly={false}
         />
         <input type="submit" value={postId ? "수정하기" : "작성하기"} />
+        <input type="submit" value="취소하기" onClick={() => navigate("/")} />
       </form>
     </>
   );

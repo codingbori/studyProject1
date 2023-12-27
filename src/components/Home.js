@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
-      <Header />
+      <Header popup={props.popup} setPopup={props.setPopup} />
       <Outlet />
     </>
   );

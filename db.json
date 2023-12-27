@@ -17,7 +17,7 @@
       ],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 15
+      "clicked": 17
     },
     {
       "id": 2,
@@ -36,7 +36,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 11
+      "clicked": 12
     },
     {
       "id": 3,
@@ -141,7 +141,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 3
+      "clicked": 8
     },
     {
       "id": 9,
@@ -160,7 +160,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 5
+      "clicked": 7
     },
     {
       "id": 10,
@@ -250,7 +250,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 1
+      "clicked": 2
     },
     {
       "id": 16,
@@ -325,7 +325,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 3
+      "clicked": 5
     },
     {
       "id": 21,
@@ -340,7 +340,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 1
+      "clicked": 2
     },
     {
       "id": 22,
@@ -400,7 +400,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 2
     },
     {
       "id": 26,
@@ -445,7 +445,7 @@
       ],
       "category": "공구",
       "timeStamp": "",
-      "clicked": 0
+      "clicked": 1
     },
     {
       "id": 29,
@@ -1249,7 +1249,7 @@
       "imageUrl": [],
       "category": "정보",
       "timeStamp": 1703421664546,
-      "clicked": 12,
+      "clicked": 21,
       "id": 83
     },
     {
@@ -1259,7 +1259,7 @@
       "imageUrl": [],
       "category": "일상",
       "timeStamp": 1703425167307,
-      "clicked": 16,
+      "clicked": 20,
       "id": 84
     },
     {
@@ -1269,8 +1269,28 @@
       "imageUrl": [],
       "category": "일상",
       "timeStamp": 1703426346789,
-      "clicked": 71,
+      "clicked": 82,
       "id": 86
+    },
+    {
+      "userid": "user1",
+      "title": "댓글 id 확인용으로 쓰는 새 글",
+      "text": "텍스트박스 안 내용물도 <p>로 예쁘게 감싸고 싶은데 이건 또 언제 한담. 아주 큰일이야..",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703691275386,
+      "clicked": 15,
+      "id": 87
+    },
+    {
+      "userid": "user3",
+      "title": "줄바꿈을 위한 노력들",
+      "text": "첫 번째 줄\n두 번째 줄\n\n더블엔터 후 세 번째 줄",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703699711570,
+      "clicked": 7,
+      "id": 88
     }
   ],
   "comments": [
@@ -1447,6 +1467,78 @@
       "parentId": "0",
       "timeStamp": 1703600658622,
       "id": 27
+    },
+    {
+      "userId": "user1",
+      "text": "대댓글을 적어요. 잘 동작하나 봅시다.",
+      "postId": "87",
+      "parentId": 28,
+      "timeStamp": 1703691359253,
+      "id": 29
+    },
+    {
+      "userId": null,
+      "text": null,
+      "postId": "87",
+      "parentId": "0",
+      "timeStamp": 1703692736264,
+      "id": 30
+    },
+    {
+      "userId": "user1",
+      "text": "만들어요",
+      "postId": "87",
+      "parentId": 30,
+      "timeStamp": 1703692741189,
+      "id": 31
+    },
+    {
+      "userId": "user1",
+      "text": "만들어요",
+      "postId": "87",
+      "parentId": 30,
+      "timeStamp": 1703692744727,
+      "id": 32
+    },
+    {
+      "userId": "user3",
+      "text": "3번감자의 댓글",
+      "postId": "8",
+      "parentId": "0",
+      "timeStamp": 1703694672854,
+      "id": 33
+    },
+    {
+      "userId": "user3",
+      "text": "3번감자의 대댓글",
+      "postId": "8",
+      "parentId": 33,
+      "timeStamp": 1703694680253,
+      "id": 34
+    },
+    {
+      "userId": "user3",
+      "text": "대대댓글을~~~ 적어요~~~~",
+      "postId": "87",
+      "parentId": "0",
+      "timeStamp": 1703698091610,
+      "id": 35
+    },
+    {
+      "userId": "user3",
+      "text": "와아 못생겼다",
+      "postId": "87",
+      "parentId": 35,
+      "timeStamp": 1703698442804,
+      "id": 36
+    },
+    {
+      "userId": "user3",
+      "text": "댓글에 닉네임을 붙였어요",
+      "postId": "88",
+      "parentId": "0",
+      "timeStamp": 1703701198868,
+      "id": 37
     }
   ],
   "users": [

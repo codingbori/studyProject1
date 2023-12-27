@@ -1,14 +1,16 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import "./Posts.css";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import PAGE from "../assets/pagingCount";
 import Paging from "./Paging";
-import { useEffect, useState } from "react";
+import { returnDate } from "../assets/tools";
+import "./Posts.css";
 
 const Posts = () => {
-  let { category, searched, userid } = useParams();
   const getPage = useLocation().search;
   let currentPage = new URLSearchParams(getPage).get("page") || 1;
-
+  const navigate = useNavigate();
+  let { category, searched, userid } = useParams();
+  const [searchResult, setSearchResult] = useState([]);
   const [postArr, setPostArr] = useState([]);
   const [totalCount, setTotalCount] = useState(26);
   const [sort, setSort] = useState("timeStamp");
@@ -22,17 +24,16 @@ const Posts = () => {
     e.target.className = "active";
   };
 
+  //totalCount찾기
   useEffect(() => {
+    if (searched) return;
     async function getTotalCount() {
       try {
-        const response = searched
-          ? await fetch(`http://localhost:8000/posts?text_like=${searched}`)
-          : await fetch(
-              `http://localhost:8000/posts?${
-                category ? `category=${category}` : ""
-              }${userid ? `userid=${userid}` : ""}
-              `
-            );
+        const response = await fetch(
+          `http://localhost:8000/posts?${
+            category ? `category=${category}` : ""
+          }${userid ? `userid=${userid}` : ""}`
+        );
         const datas = await response.json();
         setTotalCount(datas.length);
       } catch (err) {
@@ -41,20 +42,30 @@ const Posts = () => {
       }
     }
     getTotalCount();
-  }, [category, searched, userid]);
+  }, [category, userid]);
 
   //페이지 변경
   useEffect(() => {
+    if (searched) return;
     async function getPosts() {
       try {
         const response = await fetch(
           `http://localhost:8000/posts?${
             category ? `category=${category}` : ""
-          }${searched ? `text_like=${searched}` : ""}${
-            userid ? `userid=${userid}` : ""
-          }&_page=${currentPage}&_limit=${PAGE.limit}&_sort=${sort}&_order=desc`
+          }${userid ? `userid=${userid}` : ""}&_page=${currentPage}&_limit=${
+            PAGE.limit
+          }&_sort=${sort}&_order=desc`
         );
         const datas = await response.json();
+
+        //각 포스트의 댓글수도 여기서 구하도록 합시다.
+        for (let i = 0; i < datas.length; i++) {
+          const res2 = await fetch(
+            `http://localhost:8000/comments?postId=${datas[i].id}`
+          );
+          const data2 = await res2.json();
+          datas[i].commentNum = data2.length;
+        }
         setPostArr(datas);
       } catch (err) {
         console.log(err);
@@ -62,16 +73,73 @@ const Posts = () => {
       }
     }
     getPosts();
-  }, [category, searched, userid, currentPage, sort]);
+  }, [category, userid, currentPage, sort]);
+
+  //search특수
+  useEffect(() => {
+    if (!searched) return;
+    const jsonOut = async (title) => {
+      const response = await fetch(
+        `http://localhost:8000/posts?${title}_like=${searched}`
+      );
+      const datas = await response.json();
+      //각 포스트의 댓글수도 여기서 구하도록 합시다.
+      for (let i = 0; i < datas.length; i++) {
+        const res2 = await fetch(
+          `http://localhost:8000/comments?postId=${datas[i].id}`
+        );
+        const data2 = await res2.json();
+        datas[i].commentNum = data2.length;
+      }
+      return datas;
+    };
+    const uniqueOut = (arr) => {
+      const unique = [];
+      const ids = [];
+      arr.map((obj) => {
+        if (!ids.includes(obj.id)) {
+          ids.push(obj.id);
+          unique.push(obj);
+        }
+      });
+      return unique;
+    };
+    Promise.all([jsonOut("title"), jsonOut("text")]).then(([title, text]) => {
+      const unique = uniqueOut([...title, ...text]);
+      unique.sort((x, y) => y[sort] - x[sort]);
+      setSearchResult(unique);
+      setTotalCount(unique.length);
+    });
+  }, [searched, sort]);
+  //search특수2
+  useEffect(() => {
+    if (!searched) return;
+    const arr = [];
+    for (
+      let i = (currentPage - 1) * PAGE.limit;
+      i < Math.min(currentPage * PAGE.limit, searchResult.length);
+      i++
+    ) {
+      arr.push(searchResult[i]);
+    }
+    setPostArr(arr);
+  }, [searchResult, currentPage, sort]);
 
   const makeSection = (post) => {
     return (
-      <section className="outer-post" key={post.id}>
-        <span>{post.category}</span>
+      <section
+        className="outer-post"
+        key={post.id}
+        onClick={() => {
+          navigate("/posts?id=" + post.id);
+        }}
+      >
+        <p className="outer-post-category">{post.category}</p>
         <h4 className="outer-post-title">
-          <Link to={"/posts?id=" + post.id}>{post.title}</Link>
+          {post.title}
+          <span className="comment-number">{post.commentNum}</span>
         </h4>
-        <span>조회수{post.clicked}</span>
+        <p className="post-date">{returnDate(post.timeStamp)}</p>
       </section>
     );
   };

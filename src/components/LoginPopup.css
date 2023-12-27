@@ -1,0 +1,23 @@
+.login-popup {
+	position: fixed;
+	display: inline-block;
+	top: calc(50% - 70px);
+	left: calc(50% - 150px);
+	padding: 20px;
+	background-color: #fff;
+	border: 1px solid green;
+	box-shadow: 10px 10px 5px 10px gray ;
+	z-index: 1;
+}
+
+.login-popup-desc {
+	line-height: 180%;
+}
+
+.login-popup-buttons {
+	align-items: center;
+}
+
+.login-popup-buttons > button {
+	margin: 0 10%;
+}

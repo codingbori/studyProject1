@@ -1,34 +1,39 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import LoginPopup from "./LoginPopup";
 import "./Header.css";
 
-const Header = () => {
+const Header = (props) => {
   //카카오 로그인에 미친 사람
   const getToken = useLocation().search;
-  let token = new URLSearchParams(getToken).get("code");
-  //토큰을 받아요~~
-  fetch("https://kauth.kakao.com/oauth/token", {
-    method: "POST",
-    headers: { "Content-type": "application/x-www-form-urlencoded" },
-    body: JSON.stringify({
-      "grant-type": "authorization_code",
-      client_id: "a3a01ea791553ec41def1c7ac61278bf",
-      "redirect-uri": "https://2023community.netlify.app",
-      code: token,
-      client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
-    }),
-  })
-    .then((res) => res.json())
-    .then((datas) => console.log(datas));
+  let token = new URLSearchParams(getToken).get("code") || null;
+  if (token) {
+    //토큰을 받아요~~
+    fetch("https://kauth.kakao.com/oauth/token", {
+      method: "POST",
+      headers: { "Content-type": "application/x-www-form-urlencoded" },
+      body: JSON.stringify({
+        "grant-type": "authorization_code",
+        client_id: "a3a01ea791553ec41def1c7ac61278bf",
+        "redirect-uri": "https://2023community.netlify.app",
+        code: token,
+      }),
+    })
+      .then((res) => res.json())
+      .then((datas) => console.log(datas));
 
-  //(끝)카카오 로그인에 미친 사람
+    //(끝)카카오 로그인에 미친 사람
+  }
 
+  let postId = new URLSearchParams(getToken).get("id");
+  let pageNum = new URLSearchParams(getToken).get("page");
+  const user = JSON.parse(localStorage.getItem("2023user"));
   let { searched, userid } = useParams();
-  const [category, setCategory] = useState("전체");
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("2023user"));
+  const [category, setCategory] = useState("전체");
   const [islogin, setIslogin] = useState(Boolean(user));
+
   const choice = () => {
     const userbox = document.getElementsByClassName("user-info-box")[0];
     userbox.classList.add("active");
@@ -72,6 +77,7 @@ const Header = () => {
 
   const searchText = (e) => {
     e.preventDefault();
+    if (!e.target.search.value) return;
     navigate("/search/" + e.target.search.value);
   };
 
@@ -90,9 +96,24 @@ const Header = () => {
     }
   };
 
+  const goToLogin = () => {
+    navigate("/login/", {
+      state: `${pathname}${postId ? `?id=${postId}` : ""}${
+        pageNum ? `?page=${pageNum}` : ""
+      }`,
+    });
+  };
+
   return (
     <>
       <header id="header">
+        {props.popup && (
+          <LoginPopup
+            popup={props.popup}
+            switch={props.setPopup}
+            goToLogin={goToLogin}
+          />
+        )}
         <div id="login-out">
           <div
             className="button-home"
@@ -100,17 +121,9 @@ const Header = () => {
               navigate("/");
             }}
           >
-            A
+            홈
           </div>
-          {!islogin && (
-            <button
-              onClick={() => {
-                navigate("/login/", { state: pathname });
-              }}
-            >
-              로그인하세요
-            </button>
-          )}
+          {!islogin && <button onClick={goToLogin}>로그인하세요</button>}
           {islogin && (
             <>
               <button
@@ -129,11 +142,12 @@ const Header = () => {
         <div id="search-box">
           <button
             className="write"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               if (islogin) {
                 navigate("/write/");
               } else {
-                console.log("로그인하세요 팝업을 띄웁니다.");
+                props.setPopup();
               }
             }}
           >
@@ -143,7 +157,7 @@ const Header = () => {
             <input
               type="text"
               name="search"
-              placeholder="내용을 입력하세요"
+              placeholder="제목 또는 내용을 입력하세요"
               className="search-input"
             />
             <button type="submit">검색</button>
