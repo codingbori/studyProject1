@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Write.css";
 import { useEffect, useState } from "react";

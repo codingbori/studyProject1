@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import makeTableRow from "../assets/tools.js";
+import makeTableRow from "../assets/tools/tools";
 import "./LoginPage.css";
 
 const LoginPage = () => {

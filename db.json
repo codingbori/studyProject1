@@ -141,7 +141,7 @@
       ],
       "category": "정보",
       "timeStamp": "",
-      "clicked": 8
+      "clicked": 9
     },
     {
       "id": 9,
@@ -268,981 +268,6 @@
       "clicked": 1
     },
     {
-      "id": 17,
-      "userid": "user3",
-      "title": "테스트17",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 2
-    },
-    {
-      "id": 18,
-      "userid": "user3",
-      "title": "테스트18",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 19,
-      "userid": "user3",
-      "title": "테스트19",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 2
-    },
-    {
-      "id": 20,
-      "userid": "user3",
-      "title": "테스트20",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 5
-    },
-    {
-      "id": 21,
-      "userid": "user3",
-      "title": "테스트21",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 2
-    },
-    {
-      "id": 22,
-      "userid": "user3",
-      "title": "테스트22",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 23,
-      "userid": "user3",
-      "title": "테스트23",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 2
-    },
-    {
-      "id": 24,
-      "userid": "user3",
-      "title": "테스트24",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 3
-    },
-    {
-      "id": 25,
-      "userid": "user3",
-      "title": "테스트25",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 2
-    },
-    {
-      "id": 26,
-      "userid": "user3",
-      "title": "테스트26",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 27,
-      "userid": "user3",
-      "title": "테스트27",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 28,
-      "userid": "user3",
-      "title": "테스트28",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 29,
-      "userid": "user3",
-      "title": "테스트29",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 30,
-      "userid": "user3",
-      "title": "테스트30",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 31,
-      "userid": "user3",
-      "title": "테스트31",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 32,
-      "userid": "user3",
-      "title": "테스트32",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 33,
-      "userid": "user3",
-      "title": "테스트33",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 34,
-      "userid": "user3",
-      "title": "테스트34",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 35,
-      "userid": "user3",
-      "title": "테스트35",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 36,
-      "userid": "user3",
-      "title": "테스트36",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 37,
-      "userid": "user3",
-      "title": "테스트37",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 38,
-      "userid": "user3",
-      "title": "테스트38",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 39,
-      "userid": "user3",
-      "title": "테스트39",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 40,
-      "userid": "user3",
-      "title": "테스트40",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 41,
-      "userid": "user3",
-      "title": "테스트41",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 42,
-      "userid": "user3",
-      "title": "테스트42",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 43,
-      "userid": "user3",
-      "title": "테스트43",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 3
-    },
-    {
-      "id": 44,
-      "userid": "user3",
-      "title": "테스트44",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 45,
-      "userid": "user3",
-      "title": "테스트45",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 46,
-      "userid": "user3",
-      "title": "테스트46",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 47,
-      "userid": "user3",
-      "title": "테스트47",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 48,
-      "userid": "user3",
-      "title": "테스트48",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 49,
-      "userid": "user3",
-      "title": "테스트49",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 50,
-      "userid": "user3",
-      "title": "테스트50",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 51,
-      "userid": "user3",
-      "title": "테스트51",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 52,
-      "userid": "user3",
-      "title": "테스트52",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 53,
-      "userid": "user3",
-      "title": "테스트53",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 54,
-      "userid": "user3",
-      "title": "테스트54",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 55,
-      "userid": "user3",
-      "title": "테스트55",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 56,
-      "userid": "user3",
-      "title": "테스트56",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 57,
-      "userid": "user3",
-      "title": "테스트57",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 58,
-      "userid": "user3",
-      "title": "테스트58",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 59,
-      "userid": "user3",
-      "title": "테스트59",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 60,
-      "userid": "user3",
-      "title": "테스트60",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 61,
-      "userid": "user3",
-      "title": "테스트61",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 62,
-      "userid": "user3",
-      "title": "테스트62",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 63,
-      "userid": "user3",
-      "title": "테스트63",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 64,
-      "userid": "user3",
-      "title": "테스트64",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 65,
-      "userid": "user3",
-      "title": "테스트65",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 66,
-      "userid": "user3",
-      "title": "테스트66",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 67,
-      "userid": "user3",
-      "title": "테스트67",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 68,
-      "userid": "user3",
-      "title": "테스트68",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 69,
-      "userid": "user3",
-      "title": "테스트69",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 70,
-      "userid": "user3",
-      "title": "테스트70",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 71,
-      "userid": "user3",
-      "title": "테스트71",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 72,
-      "userid": "user3",
-      "title": "테스트72",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 73,
-      "userid": "user3",
-      "title": "테스트73",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 74,
-      "userid": "user3",
-      "title": "테스트74",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 75,
-      "userid": "user3",
-      "title": "테스트75",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 76,
-      "userid": "user3",
-      "title": "테스트76",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 77,
-      "userid": "user3",
-      "title": "테스트77",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 78,
-      "userid": "user3",
-      "title": "테스트78",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 1
-    },
-    {
-      "id": 79,
-      "userid": "user3",
-      "title": "테스트79",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 80,
-      "userid": "user3",
-      "title": "테스트80",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 0
-    },
-    {
-      "id": 81,
-      "userid": "user3",
-      "title": "테스트81",
-      "text": "loremlorem",
-      "imageUrl": [
-        {
-          "src": "",
-          "alt": "빈이미지1"
-        }
-      ],
-      "category": "공구",
-      "timeStamp": "",
-      "clicked": 3
-    },
-    {
       "userid": "user1",
       "title": "1번감자의 글(수정됨)",
       "text": "글 수정하기 기능 사용을 위한 대비. 수정하기 기능이 작동하는지 시험해봅시다. 카테고리, 제목, 내용을 바꿀 것입니다.",
@@ -1291,6 +316,116 @@
       "timeStamp": 1703699711570,
       "clicked": 7,
       "id": 88
+    },
+    {
+      "userid": "user4",
+      "title": "4번감자의 글1",
+      "text": "첫번째",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1703711055216,
+      "clicked": 0,
+      "id": 89
+    },
+    {
+      "userid": "user4",
+      "title": "4번감자의 글2",
+      "text": "두번째",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1703711065884,
+      "clicked": 0,
+      "id": 90
+    },
+    {
+      "userid": "user4",
+      "title": "4번감자의 글 3",
+      "text": "세번째",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703711076746,
+      "clicked": 0,
+      "id": 91
+    },
+    {
+      "userid": "user4",
+      "title": "4번감자의 글4",
+      "text": "네번째",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703711090697,
+      "clicked": 0,
+      "id": 92
+    },
+    {
+      "userid": "user4",
+      "title": "4번감자의 글 5",
+      "text": "다섯번째",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1703711100883,
+      "clicked": 0,
+      "id": 93
+    },
+    {
+      "userid": "user4",
+      "title": "4번감자의 글6",
+      "text": "여섯번째",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1703711115309,
+      "clicked": 0,
+      "id": 94
+    },
+    {
+      "userid": "user4",
+      "title": "4번감자의 글 7",
+      "text": "일곱번째",
+      "imageUrl": [],
+      "category": "공구",
+      "timeStamp": 1703711129296,
+      "clicked": 3,
+      "id": 95
+    },
+    {
+      "userid": "user5",
+      "title": "5번감자의 일상",
+      "text": "포카칩 땡긴다",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1703711162658,
+      "clicked": 1,
+      "id": 96
+    },
+    {
+      "userid": "user5",
+      "title": "5번감자의 정보",
+      "text": "꼬깔콘 땡긴다",
+      "imageUrl": [],
+      "category": "정보",
+      "timeStamp": 1703711183996,
+      "clicked": 1,
+      "id": 97
+    },
+    {
+      "userid": "user5",
+      "title": "5번감자의 공구",
+      "text": "한라봉 땡긴다",
+      "imageUrl": [],
+      "category": "공구",
+      "timeStamp": 1703711206219,
+      "clicked": 1,
+      "id": 98
+    },
+    {
+      "userid": "user5",
+      "title": "이미지 넣기 구현을 실패했습니다.",
+      "text": "서버를 제대로 만들지 않았기 때문이라고 생각합니다. 깃허브에 임시로 만든 localhost:8000 json server는 파일 업로드를 못 받는 것 같아요. 어쩐지 content-type:application~ 꼭 쓰라고 적혀있더라고요.\n\npostman같은 걸로 임시 서버를 돌리면 얼추 기능을 구현할 수 있을 것 같습니다만, 마감기한 내에는 못 할 것 같네요!\n\n1주차에 못 했던 firebase를 아직도 못 했습니다. 모든 실패의 원인은 그것입니다.",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1703711493867,
+      "clicked": 5,
+      "id": 99
     }
   ],
   "comments": [
@@ -1539,6 +674,14 @@
       "parentId": "0",
       "timeStamp": 1703701198868,
       "id": 37
+    },
+    {
+      "userId": "user5",
+      "text": "럭키세븐",
+      "postId": "95",
+      "parentId": "0",
+      "timeStamp": 1703711240669,
+      "id": 38
     }
   ],
   "users": [
@@ -1562,9 +705,15 @@
     },
     {
       "id": "user5",
-      "password": "dhfl",
+      "password": "rkawk",
       "email": "all133@naver.com",
-      "nickname": "user5"
+      "nickname": "오감자"
+    },
+    {
+      "id": "user4",
+      "password": "rkawk",
+      "email": "bori_heo@naver.com",
+      "nickname": "4감ㅈr"
     }
   ]
 }

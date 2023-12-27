@@ -1,5 +1,5 @@
-import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
-import makeTableRow from "../assets/tools";
+import { Link, Outlet, useParams } from "react-router-dom";
+import makeTableRow from "../assets/tools/tools";
 import "./MyPage.css";
 
 const ChangePw = () => {
@@ -78,7 +78,7 @@ const Profile = () => {
       <table className="profile-card">
         <tbody>
           <tr>
-            <td rowSpan="2">그림1</td>
+            <td rowSpan="2">기능안함</td>
             <td>
               <input
                 id="nickname"

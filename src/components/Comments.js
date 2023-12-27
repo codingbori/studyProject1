@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { returnDate } from "../assets/tools";
+import { returnDate } from "../assets/tools/tools";
 import "./Comments.css";
 
 const Comments = (props) => {

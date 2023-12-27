@@ -6,9 +6,10 @@ import "./Header.css";
 const Header = (props) => {
   //카카오 로그인에 미친 사람
   const getToken = useLocation().search;
-  let token = new URLSearchParams(getToken).get("code") || null;
-  if (token) {
+  let code = new URLSearchParams(getToken).get("code") || null;
+  if (code) {
     //토큰을 받아요~~
+    console.log("코드: ", code);
     fetch("https://kauth.kakao.com/oauth/token", {
       method: "POST",
       headers: { "Content-type": "application/x-www-form-urlencoded" },
@@ -16,11 +17,11 @@ const Header = (props) => {
         "grant-type": "authorization_code",
         client_id: "a3a01ea791553ec41def1c7ac61278bf",
         "redirect-uri": "https://2023community.netlify.app",
-        code: token,
+        code: code,
       }),
     })
       .then((res) => res.json())
-      .then((datas) => console.log(datas));
+      .then((datas) => console.log("token?: ", datas));
 
     //(끝)카카오 로그인에 미친 사람
   }

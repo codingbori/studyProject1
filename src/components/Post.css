@@ -11,5 +11,5 @@
 
 .post-text {
 	margin: 10px;
-	height: 1rem;
+	min-height: 1rem;
 }

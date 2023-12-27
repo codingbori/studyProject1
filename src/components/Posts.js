@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import PAGE from "../assets/pagingCount";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import PAGE from "../assets/tools/pagingCount";
 import Paging from "./Paging";
-import { returnDate } from "../assets/tools";
+import { returnDate } from "../assets/tools/tools";
 import "./Posts.css";
 
 const Posts = () => {

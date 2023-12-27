@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import makeTableRow from "../assets/tools.js";
+import makeTableRow from "../assets/tools/tools";
 import { useState } from "react";
 
 const Membership = () => {

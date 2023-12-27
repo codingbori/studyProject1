@@ -44,7 +44,7 @@ const Post = (props) => {
   const textLines = [];
   const lineArr = p.text.split("\n");
   lineArr.forEach((line) => {
-    textLines.push(<div className="post-text">{line}</div>);
+    textLines.push(<p className="post-text">{line}</p>);
   });
 
   const postImages = [];
