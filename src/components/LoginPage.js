@@ -37,34 +37,6 @@ const LoginPage = () => {
     window.Kakao.Auth.authorize({
       redirectUri: "https://2023community.netlify.app",
     });
-
-    displayToken();
-    function displayToken() {
-      console.log("displayToken 진입");
-      var token = getCookie("authorize-access-token");
-
-      if (token) {
-        window.Kakao.Auth.setAccessToken(token);
-        window.Kakao.Auth.getStatusInfo()
-          .then(function (res) {
-            if (res.status === "connected") {
-              console.log(
-                "login success, token: " + window.Kakao.Auth.getAccessToken()
-              );
-            }
-          })
-          .catch(function (err) {
-            window.Kakao.Auth.setAccessToken(null);
-          });
-      }
-    }
-
-    function getCookie(name) {
-      var parts = document.cookie.split(name + "=");
-      if (parts.length === 2) {
-        return parts[1].split(";")[0];
-      }
-    }
   }
 
   return (

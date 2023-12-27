@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import LoginPopup from "./LoginPopup";
 import "./Header.css";
@@ -7,6 +7,37 @@ const Header = (props) => {
   //카카오 로그인에 미친 사람
   const getToken = useLocation().search;
   let code = new URLSearchParams(getToken).get("code") || null;
+
+  useEffect(() => {
+    displayToken();
+  }, [code]);
+
+  function displayToken() {
+    console.log("displayToken 진입");
+    var token = getCookie("authorize-access-token");
+
+    if (token) {
+      window.Kakao.Auth.setAccessToken(token);
+      window.Kakao.Auth.getStatusInfo()
+        .then(function (res) {
+          if (res.status === "connected") {
+            console.log(
+              "login success, token: " + window.Kakao.Auth.getAccessToken()
+            );
+          }
+        })
+        .catch(function (err) {
+          window.Kakao.Auth.setAccessToken(null);
+        });
+    }
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie.split(name + "=");
+    if (parts.length === 2) {
+      return parts[1].split(";")[0];
+    }
+  }
 
   if (false) {
     //토큰을 받아요~~
