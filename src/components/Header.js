@@ -10,13 +10,13 @@ const Header = () => {
   fetch("https://kauth.kakao.com/oauth/token", {
     method: "POST",
     headers: { "Content-type": "application/x-www-form-urlencoded" },
-    body: {
+    body: JSON.stringify({
       "grant-type": "authorization_code",
       client_id: "a3a01ea791553ec41def1c7ac61278bf",
       "redirect-uri": "https://2023community.netlify.app",
       code: token,
       client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
-    },
+    }),
   })
     .then((res) => res.json())
     .then((datas) => console.log(datas));
