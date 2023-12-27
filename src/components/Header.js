@@ -12,7 +12,9 @@ const Header = (props) => {
     console.log("코드: ", code);
     fetch("https://kauth.kakao.com/oauth/token", {
       method: "POST",
-      headers: { "Content-type": "application/x-www-form-urlencoded" },
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
       body: JSON.stringify({
         grant_type: "authorization_code",
         client_id: "a3a01ea791553ec41def1c7ac61278bf",
