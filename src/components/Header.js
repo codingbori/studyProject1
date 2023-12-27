@@ -14,10 +14,10 @@ const Header = (props) => {
       method: "POST",
       headers: { "Content-type": "application/x-www-form-urlencoded" },
       body: JSON.stringify({
-        "grant-type": "authorization_code",
+        grant_type: "authorization_code",
         client_id: "a3a01ea791553ec41def1c7ac61278bf",
-        "redirect-uri": "https://2023community.netlify.app",
-        code: code,
+        redirect_uri: "https://2023community.netlify.app",
+        code: `${code}`,
       }),
     })
       .then((res) => res.json())
