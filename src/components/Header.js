@@ -10,6 +10,7 @@ const Header = (props) => {
 
   displayToken();
   function displayToken() {
+    console.log("displayToken 진입");
     var token = getCookie("authorize-access-token");
 
     if (token) {
@@ -17,8 +18,9 @@ const Header = (props) => {
       window.Kakao.Auth.getStatusInfo()
         .then(function (res) {
           if (res.status === "connected") {
-            document.getElementById("token-result").innerText =
-              "login success, token: " + window.Kakao.Auth.getAccessToken();
+            console.log(
+              "login success, token: " + window.Kakao.Auth.getAccessToken()
+            );
           }
         })
         .catch(function (err) {
