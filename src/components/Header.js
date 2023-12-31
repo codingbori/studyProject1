@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import LoginPopup from "./LoginPopup";
+import { KakaoLogin } from "../assets/tools/Constants";
 import "./Header.css";
 
 const Header = (props) => {
@@ -9,56 +10,46 @@ const Header = (props) => {
   let code = new URLSearchParams(getToken).get("code") || null;
 
   useEffect(() => {
-    displayToken();
+    async function LoginWithKakao() {
+      if (!code) return;
+      try {
+        const bodyData = {
+          grant_type: "authorization_code",
+          client_id: KakaoLogin.REST_API_key,
+          redirect_uri: KakaoLogin.Redirect_URI,
+          code: code,
+          client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
+        };
+        const queryStringBody = Object.keys(bodyData)
+          .map((k) => encodeURIComponent(k) + "=" + encodeURI(bodyData[k]))
+          .join("&");
+        console.log(queryStringBody);
+        const res1 = await fetch("https://kauth.kakao.com/oauth/token", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded",
+          },
+          body: queryStringBody,
+        });
+        const tokens = await res1.json();
+        const ACCESS_TOKEN = tokens["access_token"];
+        /**사용자 정보 가져오기*/
+        const res2 = await fetch("https://kapi.kakao.com/v2/user/me", {
+          headers: {
+            Authorization: `Bearer ${ACCESS_TOKEN}`,
+            "Content-type": "Content-type: application/x-www-form-urlencoded",
+          },
+        });
+        const userInfo = await res2.json();
+        console.log(userInfo.id, userInfo.properties.nickname);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    LoginWithKakao();
   }, [code]);
 
-  function displayToken() {
-    console.log("displayToken 진입");
-    var token = getCookie("authorize-access-token");
-
-    if (token) {
-      window.Kakao.Auth.setAccessToken(token);
-      window.Kakao.Auth.getStatusInfo()
-        .then(function (res) {
-          if (res.status === "connected") {
-            console.log(
-              "login success, token: " + window.Kakao.Auth.getAccessToken()
-            );
-          }
-        })
-        .catch(function (err) {
-          window.Kakao.Auth.setAccessToken(null);
-        });
-    }
-  }
-
-  function getCookie(name) {
-    var parts = document.cookie.split(name + "=");
-    if (parts.length === 2) {
-      return parts[1].split(";")[0];
-    }
-  }
-
-  if (false) {
-    //토큰을 받아요~~
-    console.log("코드: ", code);
-    fetch("https://kauth.kakao.com/oauth/token", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-      },
-      body: JSON.stringify({
-        grant_type: "authorization_code",
-        client_id: "a3a01ea791553ec41def1c7ac61278bf",
-        redirect_uri: "https://2023community.netlify.app",
-        code: `${code}`,
-      }),
-    })
-      .then((res) => res.json())
-      .then((datas) => console.log("token?: ", datas));
-
-    //(끝)카카오 로그인에 미친 사람
-  }
+  //(끝)카카오 로그인에 미친 사람
 
   let postId = new URLSearchParams(getToken).get("id");
   let pageNum = new URLSearchParams(getToken).get("page");

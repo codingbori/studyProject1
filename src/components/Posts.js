@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import PAGE from "../assets/tools/pagingCount";
+import { PAGE } from "../assets/tools/Constants";
 import Paging from "./Paging";
 import { returnDate } from "../assets/tools/tools";
 import "./Posts.css";

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { KakaoLogin } from "../assets/tools/Constants";
 import makeTableRow from "../assets/tools/tools";
 import "./LoginPage.css";
 
@@ -34,9 +35,7 @@ const LoginPage = () => {
   }
 
   function loginWithkakao() {
-    window.Kakao.Auth.authorize({
-      redirectUri: "https://2023community.netlify.app",
-    });
+    window.Kakao.Auth.authorize({ redirectUri: KakaoLogin.Redirect_URI });
   }
 
   return (
