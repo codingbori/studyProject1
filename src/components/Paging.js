@@ -1,6 +1,6 @@
 import React from "react";
 import "./Paging.css";
-import PAGE from "../assets/tools/pagingCount";
+import { PAGE } from "../assets/tools/Constants";
 import { useNavigate } from "react-router-dom";
 
 const Paging = (props) => {

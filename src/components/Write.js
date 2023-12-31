@@ -1,7 +1,7 @@
-import { ChangeEvent } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import "./Write.css";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { DATABASE_URL } from "../assets/tools/Constants";
+import "./Write.css";
 
 const Write = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Write = () => {
 
   useEffect(() => {
     const rewrite = async () => {
-      const response = await fetch(`http://localhost:8000/posts/${postId}`);
+      const response = await fetch(`${DATABASE_URL}posts/${postId}`);
       const datas = await response.json();
       setP(datas);
     };

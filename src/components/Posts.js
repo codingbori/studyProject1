@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import PAGE from "../assets/tools/pagingCount";
-import Paging from "./Paging";
+import { PAGE } from "../assets/tools/Constants";
 import { returnDate } from "../assets/tools/tools";
+import Paging from "./Paging";
 import "./Posts.css";
 
 const Posts = () => {
@@ -42,7 +42,7 @@ const Posts = () => {
       }
     }
     getTotalCount();
-  }, [category, userid]);
+  }, [category, userid, searched]);
 
   //페이지 변경
   useEffect(() => {
@@ -73,7 +73,7 @@ const Posts = () => {
       }
     }
     getPosts();
-  }, [category, userid, currentPage, sort]);
+  }, [category, userid, currentPage, sort, searched]);
 
   //search특수
   useEffect(() => {
@@ -148,6 +148,9 @@ const Posts = () => {
   postArr.map((obj) => {
     postList.push(makeSection(obj));
   });
+  if (!postArr.length) {
+    postList.push(<div>포스팅이 없습니다</div>);
+  }
 
   return (
     <>

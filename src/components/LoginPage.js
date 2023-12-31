@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import makeTableRow from "../assets/tools/tools";
-import kakaoLogin from "../assets/tools/loginDatas";
+import { kakaoLogin } from "../assets/tools/Constants";
 import "./LoginPage.css";
 
 const LoginPage = () => {

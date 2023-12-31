@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./Header";
-import kakaoLogin from "../assets/tools/loginDatas";
+import { kakaoLogin } from "../assets/tools/Constants";
 
 const Home = (props) => {
   const navigate = useNavigate();
