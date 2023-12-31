@@ -35,7 +35,7 @@ const LoginPage = () => {
 
   function loginWithkakao() {
     window.Kakao.Auth.authorize({
-      redirectUri: "https://2023community.netlify.app",
+      redirectUri: "http://localhost:3000",
     });
   }
 
