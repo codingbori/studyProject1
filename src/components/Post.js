@@ -14,7 +14,7 @@ const Post = (props) => {
     imageUrl: [],
   });
   const [nick, setNick] = useState("user");
-  const user = JSON.parse(localStorage.getItem("2023user"))?.id || null;
+  const user = JSON.parse(sessionStorage.getItem("2023user"))?.id || null;
 
   useEffect(() => {
     async function getPost() {

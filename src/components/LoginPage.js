@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import makeTableRow from "../assets/tools/tools";
-import Kakao from "../assets/tools/loginDatas";
+import kakaoLogin from "../assets/tools/loginDatas";
 import "./LoginPage.css";
 
 const LoginPage = () => {
@@ -21,7 +21,7 @@ const LoginPage = () => {
       if (!datas.length) {
         setAlert("아이디 혹은 비밀번호가 틀립니다.");
       } else {
-        window.localStorage.setItem("2023user", JSON.stringify(datas[0]));
+        window.sessionStorage.setItem("2023user", JSON.stringify(datas[0]));
         if (state) {
           navigate(state);
         } else {
@@ -35,8 +35,12 @@ const LoginPage = () => {
   }
 
   function loginWithkakao() {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(kakaoLogin.JavaScript_KEY);
+      console.log("kakao is initialized");
+    }
     window.Kakao.Auth.authorize({
-      redirectUri: Kakao.Redirect_URI,
+      redirectUri: kakaoLogin.Redirect_URI,
     });
   }
 

@@ -40,7 +40,7 @@ const Write = () => {
         body: JSON.stringify(data),
       }).catch((err) => console.log(err));
     } else {
-      const user = JSON.parse(localStorage.getItem("2023user")).id;
+      const user = JSON.parse(sessionStorage.getItem("2023user")).id;
       const time = Date.now();
       const data = {
         userid: user,

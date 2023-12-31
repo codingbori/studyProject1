@@ -17,7 +17,7 @@
       ],
       "category": "일상",
       "timeStamp": "",
-      "clicked": 17
+      "clicked": 18
     },
     {
       "id": 2,
@@ -714,6 +714,12 @@
       "password": "rkawk",
       "email": "bori_heo@naver.com",
       "nickname": "4감ㅈr"
+    },
+    {
+      "id": 3249359937,
+      "password": "kakaoPassword",
+      "email": "tempUser@temp.com",
+      "nickname": "카카오로그인한자"
     }
   ]
 }

@@ -5,7 +5,7 @@ import "./MyPage.css";
 const ChangePw = () => {
   const handleChangePW = async (event) => {
     event.preventDefault();
-    const userID = JSON.parse(localStorage.getItem("2023user")).id;
+    const userID = JSON.parse(sessionStorage.getItem("2023user")).id;
     const response = await fetch(
       `http://localhost:8000/users?id=${userID}&password=${event.target.pw.value}`
     );
@@ -54,7 +54,7 @@ const ChangePw = () => {
 
 const changeNickname = (e) => {
   const newNickname = document.getElementById("nickname");
-  const userID = JSON.parse(localStorage.getItem("2023user")).id;
+  const userID = JSON.parse(sessionStorage.getItem("2023user")).id;
   fetch(`http://localhost:8000/users/${userID}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -62,7 +62,7 @@ const changeNickname = (e) => {
   })
     .then((res) => res.json())
     .then((datas) => {
-      window.localStorage.setItem("2023user", JSON.stringify(datas));
+      window.sessionStorage.setItem("2023user", JSON.stringify(datas));
     })
     .catch((err) => console.log(err));
 
@@ -71,7 +71,7 @@ const changeNickname = (e) => {
 
 const Profile = () => {
   let { user } = useParams();
-  const userdata = JSON.parse(localStorage.getItem("2023user"));
+  const userdata = JSON.parse(sessionStorage.getItem("2023user"));
   return (
     <>
       <p className="mypage-desc">나의 프로필을 확인하고 수정할 수 있습니다.</p>
@@ -102,9 +102,13 @@ const Profile = () => {
               <button>삭제</button>
             </td>
             <td colSpan="2">
-              <Link to={"/mypage/" + user + "/changePW/"}>
-                비밀번호 변경하기
-              </Link>
+              {Number.isNaN(userdata.id) ? (
+                <Link to={"/mypage/" + user + "/changePW/"}>
+                  비밀번호 변경하기
+                </Link>
+              ) : (
+                <span>비밀번호 변경불가</span>
+              )}
             </td>
           </tr>
         </tbody>

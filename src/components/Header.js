@@ -1,61 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import LoginPopup from "./LoginPopup";
-import Kakao from "../assets/tools/loginDatas";
 import "./Header.css";
 
 const Header = (props) => {
-  //카카오 로그인에 미친 사람
-  const getToken = useLocation().search;
-  let code = new URLSearchParams(getToken).get("code") || null;
-
-  useEffect(() => {
-    async function codeToToken() {
-      if (!code) return;
-      try {
-        const bodyData = {
-          grant_type: "authorization_code",
-          client_id: Kakao.REST_API_KEY,
-          redirect_uri: Kakao.Redirect_URI,
-          code: code,
-          client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
-        };
-        const queryStringBody = Object.keys(bodyData)
-          .map((k) => k + "=" + bodyData[k])
-          .join("&");
-        const res1 = await fetch("https://kauth.kakao.com/oauth/token", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/x-www-form-urlencoded",
-          },
-          body: queryStringBody,
-        });
-        const tokens = await res1.json();
-        const res2 = await fetch("https://kapi.kakao.com/v2/user/me", {
-          headers: {
-            Authorization: `Bearer ${tokens.access_token}`,
-            "Content-type": "Content-type: application/x-www-form-urlencoded",
-          },
-        });
-        const userInfo = await res2.json();
-        console.log(userInfo);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    codeToToken();
-  }, [code]);
-
-  //(끝)카카오 로그인에 미친 사람
-
-  let postId = new URLSearchParams(getToken).get("id");
-  let pageNum = new URLSearchParams(getToken).get("page");
-  const user = JSON.parse(localStorage.getItem("2023user"));
+  const search = useLocation().search;
+  let postId = new URLSearchParams(search).get("id");
+  let pageNum = new URLSearchParams(search).get("page");
+  const user = JSON.parse(sessionStorage.getItem("2023user"));
   let { searched, userid } = useParams();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [category, setCategory] = useState("전체");
   const [islogin, setIslogin] = useState(Boolean(user));
+
+  useEffect(() => {
+    setIslogin(!!user);
+  }, [user]);
 
   const choice = () => {
     const userbox = document.getElementsByClassName("user-info-box")[0];
@@ -81,7 +42,7 @@ const Header = (props) => {
         </button>
         <button
           onClick={() => {
-            window.localStorage.setItem("2023user", null);
+            window.sessionStorage.setItem("2023user", null);
             setIslogin(false);
           }}
         >
@@ -155,7 +116,7 @@ const Header = (props) => {
                   e.stopPropagation();
                 }}
               >
-                {user.nickname}님
+                {user.nickname} 님
               </button>
               <UserInfo name={user.nickname} email={user.email} />
             </>

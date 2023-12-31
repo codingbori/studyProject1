@@ -8,7 +8,7 @@ const Comments = (props) => {
   const postId = props.postId;
   const parentId = props.parentId;
   const depth = props.depth;
-  const id = JSON.parse(localStorage.getItem("2023user"))?.id || false;
+  const id = JSON.parse(sessionStorage.getItem("2023user"))?.id || false;
 
   useEffect(() => {
     async function fetchComments() {

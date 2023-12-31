@@ -152,26 +152,6 @@ const Posts = () => {
   return (
     <>
       <div className="sort-button" onClick={setSortAnd}>
-        <button
-          onClick={() => {
-            if (window.Kakao.Auth.getAccessToken()) {
-              console.log(
-                "카카오 토큰 존재",
-                window.Kakao.Auth.getAccessToken()
-              );
-              window.Kakao.Auth.logout(() => {
-                console.log(
-                  "로그아웃되었습니다.",
-                  window.Kakao.Auth.getAccessToken()
-                );
-              });
-            } else {
-              console.log("당신은 토큰이 없습니다.");
-            }
-          }}
-        >
-          카카오로그아웃(임시)
-        </button>
         <button value="timeStamp" className="active">
           최신순
         </button>
