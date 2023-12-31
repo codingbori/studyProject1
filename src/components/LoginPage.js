@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import makeTableRow from "../assets/tools/tools";
+import Kakao from "../assets/tools/loginDatas";
 import "./LoginPage.css";
 
 const LoginPage = () => {
@@ -35,7 +36,7 @@ const LoginPage = () => {
 
   function loginWithkakao() {
     window.Kakao.Auth.authorize({
-      redirectUri: "http://localhost:3000",
+      redirectUri: Kakao.Redirect_URI,
     });
   }
 

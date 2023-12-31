@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import LoginPopup from "./LoginPopup";
+import Kakao from "../assets/tools/loginDatas";
 import "./Header.css";
 
 const Header = (props) => {
@@ -11,23 +12,33 @@ const Header = (props) => {
   useEffect(() => {
     async function codeToToken() {
       if (!code) return;
-      console.log("코드: ", code);
       try {
-        const res = await fetch("https://kauth.kakao.com/oauth/token", {
+        const bodyData = {
+          grant_type: "authorization_code",
+          client_id: Kakao.REST_API_KEY,
+          redirect_uri: Kakao.Redirect_URI,
+          code: code,
+          client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
+        };
+        const queryStringBody = Object.keys(bodyData)
+          .map((k) => k + "=" + bodyData[k])
+          .join("&");
+        const res1 = await fetch("https://kauth.kakao.com/oauth/token", {
           method: "POST",
           headers: {
             "Content-type": "application/x-www-form-urlencoded",
           },
-          body: JSON.stringify({
-            grant_type: "authorization_code",
-            client_id: "a3a01ea791553ec41def1c7ac61278bf", //restAPI key
-            redirect_uri: "https://2023community.netlify.app",
-            code: code,
-            client_secret: "XyWEl6O5wFnsmmA1FE5NVqmsNNoClFm1",
-          }),
+          body: queryStringBody,
         });
-        const datas = await res.json();
-        console.log("token?: ", datas);
+        const tokens = await res1.json();
+        const res2 = await fetch("https://kapi.kakao.com/v2/user/me", {
+          headers: {
+            Authorization: `Bearer ${tokens.access_token}`,
+            "Content-type": "Content-type: application/x-www-form-urlencoded",
+          },
+        });
+        const userInfo = await res2.json();
+        console.log(userInfo);
       } catch (err) {
         console.log(err);
       }
