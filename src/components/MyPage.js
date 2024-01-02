@@ -2,7 +2,7 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import makeTableRow from "../assets/tools/tools";
 import "./MyPage.css";
 
-const dbRef = window.firebase.database.ref();
+const dbRef = window.firebase.database().ref();
 
 const ChangePw = () => {
   const handleChangePW = async (event) => {

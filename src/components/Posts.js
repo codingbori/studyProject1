@@ -33,7 +33,7 @@ const Posts = () => {
     if (searched) return;
     const getTotalCount = async () => {
       try {
-        const dbRef = window.firebase
+        const dbRef = await window.firebase
           .database()
           .ref("posts")
           .orderByKey()
