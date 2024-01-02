@@ -23,6 +23,7 @@ const LoginPage = () => {
       if (!datas || datas.password !== pw) {
         setAlert("아이디 혹은 비밀번호가 틀립니다.");
       } else {
+        datas.id = id;
         window.sessionStorage.setItem("2023user", JSON.stringify(datas));
         if (state) {
           navigate(state);

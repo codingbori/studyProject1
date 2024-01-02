@@ -62,7 +62,7 @@ const Posts = () => {
 
   //보여주는 페이지 변경
   useEffect(() => {
-    if (searched) return;
+    if (searched || !fireDatas) return;
     async function getPosts() {
       try {
         const postDataList = [];

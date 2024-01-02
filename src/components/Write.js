@@ -30,8 +30,10 @@ const Write = () => {
       const updates = {};
       updates["posts/" + postId + "/title"] = e.target.title.value;
       updates["posts/" + postId + "/text"] = e.target.text.value;
-      updates["posts/" + postId + "/imageUrl"] = e.target.imageUrl.value;
       updates["posts/" + postId + "/category"] = e.target.category.value;
+      if (e.target.imageUrl.value) {
+        updates["posts/" + postId + "/imageUrl"] = e.target.imageUrl.value;
+      }
 
       dbRef.update(updates);
     } else {
@@ -41,7 +43,7 @@ const Write = () => {
         userid: user,
         title: e.target.title.value,
         text: e.target.text.value,
-        imageUrl: [],
+        imageUrl: [{ src: "", alt: "no-image" }],
         category: e.target.category.value,
         timeStamp: time,
         clicked: 0,

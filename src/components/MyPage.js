@@ -98,7 +98,7 @@ const Profile = () => {
               <button>삭제</button>
             </td>
             <td colSpan="2">
-              {Number.isNaN(userdata.id) ? (
+              {Number.isNaN(Number(userdata.id)) ? (
                 <Link to={"/mypage/" + user + "/changePW/"}>
                   비밀번호 변경하기
                 </Link>

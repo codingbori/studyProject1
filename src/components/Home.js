@@ -61,6 +61,7 @@ const Home = (props) => {
             .set(data);
           navigate("/login/");
         } else {
+          data3.id = id;
           window.sessionStorage.setItem("2023user", JSON.stringify(data3));
           navigate("/");
         }
