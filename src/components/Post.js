@@ -19,20 +19,19 @@ const Post = (props) => {
   useEffect(() => {
     async function getPost() {
       try {
+        const dbRef = window.firebase.database().ref();
         //데이터를 받아요
-        const response = await fetch(`http://localhost:8000/posts/${postId}`);
-        const datas = await response.json();
-        setP(datas);
+        const res1 = await dbRef.child("posts").child(postId).get();
+        const data1 = await res1.val();
+        setP(data1);
         //닉네임을 바꿔요
-        fetch(`http://localhost:8000/users/${datas.userid}`)
-          .then((res) => res.json())
-          .then((data) => setNick(data.nickname));
+        const res2 = await dbRef.child("users").child(data1.userid).get();
+        const data2 = await res2.val();
+        setNick(data2.nickname);
         //조회수를 늘려요
-        fetch(`http://localhost:8000/posts/${postId}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ clicked: datas.clicked + 1 }),
-        });
+        const updates = {};
+        updates["posts/" + postId + "/clicked"] = data1.clicked + 1;
+        dbRef.update(updates);
       } catch (err) {
         console.log(err);
         throw err;
@@ -59,10 +58,7 @@ const Post = (props) => {
   };
 
   const deletePost = () => {
-    fetch(`http://localhost:8000/posts/${postId}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    }).catch((err) => console.log(err));
+    window.firebase.database().ref(`posts/${postId}`).remove();
     window.alert("삭제되었습니다.");
     navigate("/");
   };

@@ -426,6 +426,26 @@
       "timeStamp": 1703711493867,
       "clicked": 7,
       "id": 99
+    },
+    {
+      "userid": "user1",
+      "title": "테스트용 데이터. 어떻게 들어가나 봅시다",
+      "text": "테스트",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1704085854676,
+      "clicked": 0,
+      "id": 100
+    },
+    {
+      "userid": "user1",
+      "title": "테스트2",
+      "text": "테스트",
+      "imageUrl": [],
+      "category": "일상",
+      "timeStamp": 1704085999177,
+      "clicked": 1,
+      "id": 101
     }
   ],
   "comments": [

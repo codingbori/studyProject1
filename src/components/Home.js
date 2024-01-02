@@ -42,21 +42,24 @@ const Home = (props) => {
         const id = data2.id;
         const nickname = data2.properties.nickname;
         //당신은 우리의 회원입니까?
-        const res3 = await fetch(`http://localhost:8000/users/${id}`);
-        const data3 = await res3.json();
+        const res3 = await window.firebase
+          .database()
+          .ref()
+          .child("users")
+          .child(id)
+          .get();
+        const data3 = await res3.val();
         if (!data3.id) {
           window.alert("당신은 회원이 아닙니다. 강제 회원가입 진행됨.");
           const data = {
-            id: id,
             password: "kakaoPassword",
             email: "tempUser@temp.com",
             nickname: nickname,
           };
-          fetch("http://localhost:8000/users", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          });
+          window.firebase
+            .database()
+            .ref("users/" + id)
+            .set(data);
           navigate("/login/");
         } else {
           window.sessionStorage.setItem("2023user", JSON.stringify(data3));

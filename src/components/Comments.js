@@ -13,16 +13,35 @@ const Comments = (props) => {
   useEffect(() => {
     async function fetchComments() {
       try {
-        const response = await fetch(
-          `http://localhost:8000/comments?postId=${postId}&parentId=${parentId}`
-        );
-        const datas = await response.json();
+        //클라이언트가 2차필터를 돌린다.
+        function filterParentId(obj) {
+          var result = [];
+          Object.keys(obj).forEach((key) => {
+            if (obj[key].parentId === parentId) {
+              result.push({
+                id: result[key],
+                ...obj[key],
+              });
+            }
+          });
+          return result;
+        }
+
+        const res1 = await window.firebase
+          .database()
+          .ref("comments")
+          .orderByChild("postId")
+          .equalTo(postId)
+          .once("value");
+        const datas = filterParentId(await res1.val());
         for (let i = 0; i < datas.length; i++) {
-          const res = await fetch(
-            `http://localhost:8000/users/${datas[i].userId}`
-          );
-          const userData = await res.json();
-          datas[i].nickname = userData.nickname;
+          const res2 = await window.firebase
+            .database()
+            .ref()
+            .child("users")
+            .child(datas[i].userId);
+          const data2 = await res2.val();
+          datas[i].nickname = data2.nickname;
         }
         setComments(datas);
         setCommentNum(datas.length);
@@ -56,17 +75,18 @@ const Comments = (props) => {
     };
     e.target.comment.value = "";
     try {
-      const res = await fetch("http://localhost:8000/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const datas = await res.json();
+      const res1 = await window.firebase.database().ref("comments").push(data)
+        .key;
       //닉네임을 붙여요
-      const res2 = await fetch(`http://localhost:8000/users/${datas.userId}`);
-      const data2 = await res2.json();
-      datas.nickname = data2.nickname;
-      setComments([...comments, datas]);
+      const res2 = await window.firebase
+        .database()
+        .ref()
+        .child("users")
+        .child(data.userId);
+      const data2 = await res2.val();
+      data.id = res1;
+      data.nickname = data2.nickname;
+      setComments([...comments, data]);
       setCommentNum(commentNum + 1);
     } catch (err) {
       console.log(err);
@@ -75,27 +95,22 @@ const Comments = (props) => {
 
   const deleteComment = async (e) => {
     //하위 댓글이 있는지 찾아봅시다
-    const res1 = await fetch(
-      `http://localhost:8000/comments?parentId=${e.target.value}`
-    );
-    const datas1 = await res1.json();
-    const under = datas1.length;
-
+    const res1 = await window.firebase
+      .database()
+      .ref()
+      .child("comments")
+      .orderByChild("parentId")
+      .equalTo(e.target.value)
+      .once("value");
+    const datas1 = await res1.val();
     try {
-      if (under) {
-        fetch(`http://localhost:8000/comments/${e.target.value}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userId: null,
-            text: null,
-          }),
-        });
+      if (datas1) {
+        const updates = {};
+        updates["comments/" + e.target.value + "/userId"] = null;
+        updates["comments/" + e.target.value + "/text"] = null;
+        window.firebase.database().ref().update(updates);
       } else {
-        fetch(`http://localhost:8000/comments/${e.target.value}`, {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        });
+        window.firebase.database().ref(`comments/${e.target.value}`).remove();
       }
     } catch (err) {
       console.log(err);
@@ -103,16 +118,23 @@ const Comments = (props) => {
     window.alert("댓글이 삭제되었습니다.");
 
     //갯수가 줄어든 댓글창 업데이트
-    try {
-      const res2 = await fetch(
-        `http://localhost:8000/comments?postId=${postId}&parentId=${parentId}`
-      );
-      const datas2 = await res2.json();
-      setComments(datas2);
-      setCommentNum(commentNum - 1);
-    } catch (err) {
-      console.log(err);
-    }
+    const newComments = [];
+    comments.forEach((comment) => {
+      if (comment.id === e.target.value) {
+        newComments[newComments.length] = {
+          id: e.target.value,
+          userId: "",
+          text: "",
+          postId: postId,
+          parentId: parentId,
+          timeStamp: "",
+        };
+      } else {
+        newComments[newComments.length] = comment;
+      }
+    });
+    setComments(newComments);
+    setCommentNum(commentNum - 1);
   };
 
   const commentList = [];

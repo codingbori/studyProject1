@@ -8,11 +8,14 @@ const Membership = () => {
   const makeMembership = async (event) => {
     event.preventDefault();
     //검증로직
-    const response = await fetch(
-      `http://localhost:8000/users?id=${event.target.id.value}`
-    );
-    const datas = await response.json();
-    if (datas.length) {
+    const response = await window.firebase
+      .database()
+      .ref()
+      .child("users")
+      .child(event.target.id.value)
+      .get();
+    const sameIdUser = await response.exists();
+    if (!sameIdUser) {
       setAlert("이미 존재하는 아이디입니다");
       return;
     }
@@ -22,16 +25,14 @@ const Membership = () => {
     }
     //검증끝
     const data = {
-      id: event.target.id.value,
       password: event.target.pw.value,
       email: event.target.email.value,
       nickname: event.target.id.value,
     };
-    fetch("http://localhost:8000/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    window.firebase
+      .database()
+      .ref("users/" + event.target.id.value)
+      .set(data);
     navigate("/login/");
     return;
   };

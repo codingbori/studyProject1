@@ -7,16 +7,26 @@ const FindPassword = () => {
   const navigate = useNavigate();
   const searchPassword = async (event) => {
     event.preventDefault();
-    const response = await fetch(
-      `http://localhost:8000/users?id=${event.target.id.value}&email=${event.target.email.value}`
-    );
-    const userData = await response.json();
-    if (!userData.length) {
-      setAlert("일치하는 사용자가 없습니다");
-    } else {
-      window.alert(`당신의 비밀번호는 ${userData[0].password}입니다`);
-      navigate("/login/");
-    }
+    window.firebase
+      .database()
+      .ref()
+      .child("users")
+      .child(event.target.id.value)
+      .get()
+      .then((snapshot) => {
+        if (
+          snapshot.exists() &&
+          snapshot.val().email === event.target.email.value
+        ) {
+          window.alert(`당신의 비밀번호는 ${snapshot.val().password}입니다`);
+          navigate("/login/");
+        } else {
+          setAlert("일치하는 사용자가 없습니다");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     return;
   };
 

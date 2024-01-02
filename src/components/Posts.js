@@ -15,6 +15,87 @@ const Posts = () => {
   const [totalCount, setTotalCount] = useState(26);
   const [sort, setSort] = useState("timeStamp");
 
+  const [tab, setTab] = useState(1);
+  const [[fireFirst, fireLast], setFirePage] = useState([]);
+  const [fireDatas, setFireData] = useState({});
+
+  useEffect(() => {
+    if (currentPage > tab * 5) {
+      setTab(tab + 1);
+    } else if (currentPage <= (tab - 1) * 5) {
+      setTab(tab - 1);
+    }
+  }, [currentPage]);
+
+  //totalCount찾기 && 페이지데이터를 세팅
+  useEffect(() => {
+    if (searched) return;
+    const getTotalCount = async () => {
+      try {
+        const dbRef = window.firebase
+          .database()
+          .ref("posts")
+          .orderByKey()
+          .limitToLast(PAGE.limit * PAGE.pageCount + 1);
+        function returnValue() {
+          if (currentPage % PAGE.pageCount === PAGE.pageCount - 1) {
+            return dbRef.startAfter(fireFirst).once("value");
+          } else if (fireLast) {
+            return dbRef.endAt(fireLast).once("value");
+          } else {
+            return dbRef.once("value");
+          }
+        }
+
+        const res = await returnValue();
+        setFireData(await res.val());
+        const dataIds = Object.keys(fireDatas);
+        setFirePage([dataIds[dataIds.length - 1], dataIds[0]]);
+        setTotalCount(dataIds.length + (tab - 1) * 5);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getTotalCount();
+  }, [tab]);
+
+  //보여주는 페이지 변경
+  useEffect(() => {
+    if (searched) return;
+    async function getPosts() {
+      try {
+        const postDataList = [];
+        const newCurrentPage = currentPage % PAGE.pageCount;
+        Object.keys(fireDatas).forEach((data, index) => {
+          if (
+            index >= (newCurrentPage - 1) * PAGE.limit &&
+            index < newCurrentPage * PAGE.limit
+          ) {
+            postDataList.push({
+              id: data,
+              ...fireDatas[data],
+            });
+          }
+        });
+        //각 포스트의 댓글수
+        for (let i = 0; i < postDataList.length; i++) {
+          const res = await window.firebase
+            .database()
+            .ref("comments")
+            .orderByChild("postId")
+            .equalTo(postDataList[i].id)
+            .once("value");
+          postDataList[i].commentNum = Object.keys(await res.val()).length;
+        }
+        setPostArr(postDataList);
+      } catch (err) {
+        console.log(err);
+        throw err;
+      }
+    }
+    getPosts();
+  }, [fireDatas, currentPage, sort, searched]);
+
   const setSortAnd = (e) => {
     if (!e.target.value) return;
     for (const child of e.currentTarget.children) {
@@ -23,57 +104,6 @@ const Posts = () => {
     setSort(e.target.value);
     e.target.className = "active";
   };
-
-  //totalCount찾기
-  useEffect(() => {
-    if (searched) return;
-    async function getTotalCount() {
-      try {
-        const response = await fetch(
-          `http://localhost:8000/posts?${
-            category ? `category=${category}` : ""
-          }${userid ? `userid=${userid}` : ""}`
-        );
-        const datas = await response.json();
-        setTotalCount(datas.length);
-      } catch (err) {
-        console.log(err);
-        throw err;
-      }
-    }
-    getTotalCount();
-  }, [category, userid, searched]);
-
-  //페이지 변경
-  useEffect(() => {
-    if (searched) return;
-    async function getPosts() {
-      try {
-        const response = await fetch(
-          `http://localhost:8000/posts?${
-            category ? `category=${category}` : ""
-          }${userid ? `userid=${userid}` : ""}&_page=${currentPage}&_limit=${
-            PAGE.limit
-          }&_sort=${sort}&_order=desc`
-        );
-        const datas = await response.json();
-
-        //각 포스트의 댓글수도 여기서 구하도록 합시다.
-        for (let i = 0; i < datas.length; i++) {
-          const res2 = await fetch(
-            `http://localhost:8000/comments?postId=${datas[i].id}`
-          );
-          const data2 = await res2.json();
-          datas[i].commentNum = data2.length;
-        }
-        setPostArr(datas);
-      } catch (err) {
-        console.log(err);
-        throw err;
-      }
-    }
-    getPosts();
-  }, [category, userid, currentPage, sort, searched]);
 
   //search특수
   useEffect(() => {
@@ -162,7 +192,11 @@ const Posts = () => {
       </div>
       <main className="post-main">{postList}</main>
       <footer className="paging">
-        <Paging totalCount={totalCount} currentPage={currentPage} />
+        <Paging
+          totalCount={totalCount}
+          currentPage={currentPage}
+          setTab={setTab}
+        />
       </footer>
     </>
   );

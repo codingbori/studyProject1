@@ -14,14 +14,17 @@ const LoginPage = () => {
     const id = event.target.id.value;
     const pw = event.target.pw.value;
     try {
-      const response = await fetch(
-        `http://localhost:8000/users?id=${id}&password=${pw}`
-      );
-      const datas = await response.json();
-      if (!datas.length) {
+      const response = await window.firebase
+        .database()
+        .ref()
+        .child("users")
+        .child(id)
+        .get();
+      const datas = await response.val();
+      if (!datas || datas.password !== pw) {
         setAlert("아이디 혹은 비밀번호가 틀립니다.");
       } else {
-        window.sessionStorage.setItem("2023user", JSON.stringify(datas[0]));
+        window.sessionStorage.setItem("2023user", JSON.stringify(datas));
         if (state) {
           navigate(state);
         } else {

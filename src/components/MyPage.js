@@ -6,22 +6,23 @@ const ChangePw = () => {
   const handleChangePW = async (event) => {
     event.preventDefault();
     const userID = JSON.parse(sessionStorage.getItem("2023user")).id;
-    const response = await fetch(
-      `http://localhost:8000/users?id=${userID}&password=${event.target.pw.value}`
-    );
-    const userData = await response.json();
-    if (!userData.length) {
+    const response = await window.firebase
+      .database()
+      .ref()
+      .child("users")
+      .child(event.target.id.value)
+      .get();
+    const data = await response.val();
+    if (data.password !== event.target.pw.value) {
       window.alert("비밀번호가 틀립니다.");
       return;
     } else if (event.target.pw2.value !== event.target.pw3.value) {
       window.alert("바꿀 비밀번호가 서로 다릅니다.");
       return;
     } else {
-      fetch(`http://localhost:8000/users/${userID}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: event.target.pw2.value }),
-      });
+      const updates = {};
+      updates["users/" + userID + "/password"] = event.target.pw2.defaultValue;
+      window.firebase.database().ref().update(updates);
       window.alert("비밀번호가 변경되었습니다.");
       return;
     }
@@ -54,18 +55,13 @@ const ChangePw = () => {
 
 const changeNickname = (e) => {
   const newNickname = document.getElementById("nickname");
-  const userID = JSON.parse(sessionStorage.getItem("2023user")).id;
-  fetch(`http://localhost:8000/users/${userID}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ nickname: newNickname.value }),
-  })
-    .then((res) => res.json())
-    .then((datas) => {
-      window.sessionStorage.setItem("2023user", JSON.stringify(datas));
-    })
-    .catch((err) => console.log(err));
+  const user = JSON.parse(sessionStorage.getItem("2023user"));
+  const updates = {};
+  updates["users/" + user.id + "/nickname"] = newNickname.value;
+  window.firebase.database().ref().update(updates);
 
+  user.nickname = newNickname.value;
+  window.sessionStorage.setItem("2023user", JSON.stringify(user));
   window.alert("닉네임이 변경되었습니다.");
 };
 

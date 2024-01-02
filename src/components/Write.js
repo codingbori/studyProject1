@@ -11,8 +11,13 @@ const Write = () => {
 
   useEffect(() => {
     const rewrite = async () => {
-      const response = await fetch(`${DATABASE_URL}posts/${postId}`);
-      const datas = await response.json();
+      const response = await window.firebase
+        .database()
+        .ref()
+        .child("posts")
+        .child(postId)
+        .get();
+      const datas = await response.val();
       setP(datas);
     };
     if (postId) {
@@ -26,19 +31,14 @@ const Write = () => {
       window.alert("제목 및 내용을 입력하세요");
       return;
     }
-
     if (postId) {
-      const data = {
-        title: e.target.title.value,
-        text: e.target.text.value,
-        imageUrl: [],
-        category: e.target.category.value,
-      };
-      fetch(`http://localhost:8000/posts/${postId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      }).catch((err) => console.log(err));
+      const updates = {};
+      updates["posts/" + postId + "/title"] = e.target.title.value;
+      updates["posts/" + postId + "/text"] = e.target.text.value;
+      updates["posts/" + postId + "/imageUrl"] = e.target.imageUrl.value;
+      updates["posts/" + postId + "/category"] = e.target.category.value;
+
+      window.firebase.database().ref().update(updates);
     } else {
       const user = JSON.parse(sessionStorage.getItem("2023user")).id;
       const time = Date.now();
@@ -51,11 +51,7 @@ const Write = () => {
         timeStamp: time,
         clicked: 0,
       };
-      fetch("http://localhost:8000/posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      }).catch((err) => console.log(err));
+      window.firebase.database().ref("posts").push().set(data);
     }
     window.alert(`${postId ? "수정" : "작성"}되었습니다.`);
     navigate("/");
