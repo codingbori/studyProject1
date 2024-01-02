@@ -2,13 +2,13 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import makeTableRow from "../assets/tools/tools";
 import "./MyPage.css";
 
+const dbRef = window.firebase.database.ref();
+
 const ChangePw = () => {
   const handleChangePW = async (event) => {
     event.preventDefault();
     const userID = JSON.parse(sessionStorage.getItem("2023user")).id;
-    const response = await window.firebase
-      .database()
-      .ref()
+    const response = await dbRef
       .child("users")
       .child(event.target.id.value)
       .get();
@@ -22,7 +22,7 @@ const ChangePw = () => {
     } else {
       const updates = {};
       updates["users/" + userID + "/password"] = event.target.pw2.defaultValue;
-      window.firebase.database().ref().update(updates);
+      dbRef.update(updates);
       window.alert("비밀번호가 변경되었습니다.");
       return;
     }
@@ -58,7 +58,7 @@ const changeNickname = (e) => {
   const user = JSON.parse(sessionStorage.getItem("2023user"));
   const updates = {};
   updates["users/" + user.id + "/nickname"] = newNickname.value;
-  window.firebase.database().ref().update(updates);
+  dbRef.update(updates);
 
   user.nickname = newNickname.value;
   window.sessionStorage.setItem("2023user", JSON.stringify(user));

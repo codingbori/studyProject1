@@ -15,11 +15,11 @@ const Post = (props) => {
   });
   const [nick, setNick] = useState("user");
   const user = JSON.parse(sessionStorage.getItem("2023user"))?.id || null;
+  const dbRef = window.firebase.database().ref();
 
   useEffect(() => {
     async function getPost() {
       try {
-        const dbRef = window.firebase.database().ref();
         //데이터를 받아요
         const res1 = await dbRef.child("posts").child(postId).get();
         const data1 = await res1.val();
@@ -58,7 +58,7 @@ const Post = (props) => {
   };
 
   const deletePost = () => {
-    window.firebase.database().ref(`posts/${postId}`).remove();
+    dbRef.child("posts").child(postId).remove();
     window.alert("삭제되었습니다.");
     navigate("/");
   };

@@ -16,8 +16,7 @@ const LoginPage = () => {
     try {
       const response = await window.firebase
         .database()
-        .ref()
-        .child("users")
+        .ref("users")
         .child(id)
         .get();
       const datas = await response.val();

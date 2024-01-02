@@ -5,17 +5,17 @@ import { useState } from "react";
 const Membership = () => {
   const [alert, setAlert] = useState("");
   const navigate = useNavigate();
+  const dbRef = window.firebase.database().ref();
+
   const makeMembership = async (event) => {
     event.preventDefault();
     //검증로직
-    const response = await window.firebase
-      .database()
-      .ref()
+    const response = await dbRef
       .child("users")
       .child(event.target.id.value)
       .get();
     const sameIdUser = await response.exists();
-    if (!sameIdUser) {
+    if (sameIdUser) {
       setAlert("이미 존재하는 아이디입니다");
       return;
     }
@@ -29,10 +29,7 @@ const Membership = () => {
       email: event.target.email.value,
       nickname: event.target.id.value,
     };
-    window.firebase
-      .database()
-      .ref("users/" + event.target.id.value)
-      .set(data);
+    dbRef.child("users").child(event.target.id.value).set(data);
     navigate("/login/");
     return;
   };

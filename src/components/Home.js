@@ -44,8 +44,7 @@ const Home = (props) => {
         //당신은 우리의 회원입니까?
         const res3 = await window.firebase
           .database()
-          .ref()
-          .child("users")
+          .ref("users")
           .child(id)
           .get();
         const data3 = await res3.val();

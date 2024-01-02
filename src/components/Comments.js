@@ -9,6 +9,7 @@ const Comments = (props) => {
   const parentId = props.parentId;
   const depth = props.depth;
   const id = JSON.parse(sessionStorage.getItem("2023user"))?.id || false;
+  const dbRef = window.firebase.database().ref();
 
   useEffect(() => {
     async function fetchComments() {
@@ -27,19 +28,14 @@ const Comments = (props) => {
           return result;
         }
 
-        const res1 = await window.firebase
-          .database()
-          .ref("comments")
+        const res1 = await dbRef
+          .child("comments")
           .orderByChild("postId")
           .equalTo(postId)
           .once("value");
         const datas = filterParentId(await res1.val());
         for (let i = 0; i < datas.length; i++) {
-          const res2 = await window.firebase
-            .database()
-            .ref()
-            .child("users")
-            .child(datas[i].userId);
+          const res2 = await dbRef.child("users").child(datas[i].userId);
           const data2 = await res2.val();
           datas[i].nickname = data2.nickname;
         }
@@ -75,14 +71,9 @@ const Comments = (props) => {
     };
     e.target.comment.value = "";
     try {
-      const res1 = await window.firebase.database().ref("comments").push(data)
-        .key;
+      const res1 = await dbRef.child("comments").push(data).key;
       //닉네임을 붙여요
-      const res2 = await window.firebase
-        .database()
-        .ref()
-        .child("users")
-        .child(data.userId);
+      const res2 = await dbRef.child("users").child(data.userId);
       const data2 = await res2.val();
       data.id = res1;
       data.nickname = data2.nickname;
@@ -95,9 +86,7 @@ const Comments = (props) => {
 
   const deleteComment = async (e) => {
     //하위 댓글이 있는지 찾아봅시다
-    const res1 = await window.firebase
-      .database()
-      .ref()
+    const res1 = await dbRef
       .child("comments")
       .orderByChild("parentId")
       .equalTo(e.target.value)
@@ -108,7 +97,7 @@ const Comments = (props) => {
         const updates = {};
         updates["comments/" + e.target.value + "/userId"] = null;
         updates["comments/" + e.target.value + "/text"] = null;
-        window.firebase.database().ref().update(updates);
+        dbRef.update(updates);
       } else {
         window.firebase.database().ref(`comments/${e.target.value}`).remove();
       }

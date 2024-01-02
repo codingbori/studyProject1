@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { DATABASE_URL } from "../assets/tools/Constants";
 import "./Write.css";
 
 const Write = () => {
@@ -8,15 +7,11 @@ const Write = () => {
   const [p, setP] = useState({});
   const getPostId = useLocation().search;
   let postId = new URLSearchParams(getPostId).get("id");
+  const dbRef = window.firebase.database().ref();
 
   useEffect(() => {
     const rewrite = async () => {
-      const response = await window.firebase
-        .database()
-        .ref()
-        .child("posts")
-        .child(postId)
-        .get();
+      const response = await dbRef.child("posts").child(postId).get();
       const datas = await response.val();
       setP(datas);
     };
@@ -38,7 +33,7 @@ const Write = () => {
       updates["posts/" + postId + "/imageUrl"] = e.target.imageUrl.value;
       updates["posts/" + postId + "/category"] = e.target.category.value;
 
-      window.firebase.database().ref().update(updates);
+      dbRef.update(updates);
     } else {
       const user = JSON.parse(sessionStorage.getItem("2023user")).id;
       const time = Date.now();
@@ -51,7 +46,7 @@ const Write = () => {
         timeStamp: time,
         clicked: 0,
       };
-      window.firebase.database().ref("posts").push().set(data);
+      dbRef.child("posts").push().set(data);
     }
     window.alert(`${postId ? "수정" : "작성"}되었습니다.`);
     navigate("/");

@@ -23,6 +23,7 @@ const Posts = () => {
     if (currentPage > tab * 5) {
       setTab(tab + 1);
     } else if (currentPage <= (tab - 1) * 5) {
+      if (tab === 2) setFirePage([]);
       setTab(tab - 1);
     }
   }, [currentPage]);
